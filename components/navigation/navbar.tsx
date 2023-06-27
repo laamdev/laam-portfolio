@@ -7,8 +7,7 @@ export const Navbar = () => {
   return (
     <header>
       <div className="fixed left-5 top-5 z-10 -translate-x-1/2 text-white">
-        xxx
-        <Logo className="h-20 w-20 rounded-full bg-zinc-50 p-1" />
+        <Logo />
       </div>
       <nav className="fixed left-1/2 top-5 z-10 -translate-x-1/2 text-sm font-medium uppercase">
         <AnimatedLinks />

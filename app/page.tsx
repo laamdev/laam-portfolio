@@ -6,16 +6,16 @@ import { Balancer } from "react-wrap-balancer"
 
 import { ProjectsContainer } from "@/components/project/projects-container"
 
-export const metadata: Metadata = {
-  title: "Home",
-  description:
-    "This section includes end-to-end guides for developing Next.js 13 apps.",
-  openGraph: {
-    title: "Home",
-    description:
-      "This section includes end-to-end guides for developing Next.js 13 apps.",
-  },
-}
+// // export const metadata: Metadata = {
+// //   title: "Home",
+// //   description:
+// //     "This section includes end-to-end guides for developing Next.js 13 apps.",
+// //   openGraph: {
+// //     title: "Home",
+// //     description:
+// //       "This section includes end-to-end guides for developing Next.js 13 apps.",
+// //   },
+// // }
 
 export default async function IndexPage() {
   const featuredProjects = await allProjects.filter(
