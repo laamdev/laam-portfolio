@@ -28,15 +28,16 @@ export type Project = {
   _raw: Local.RawDocumentData
   type: 'Project'
   title: string
-  category: 'freelance' | 'in-house' | 'personal'
-  year?: number | undefined
+  isFeatured: boolean
+  agency: 'freelance' | 'in-house' | 'personal'
+  category: string
   client?: string | undefined
-  coverImage?: string | undefined
-  summary?: string | undefined
-  siteUrl?: string | undefined
+  year: number
+  coverImage: string
+  summary: string
+  siteUrl: string
   role: string[]
   stack: string[]
-  isFeatured: boolean
   /** MDX file body */
   body: MDX
   slug: string

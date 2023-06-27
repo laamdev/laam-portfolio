@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { allBlogs } from "contentlayer/generated"
+import { allBlogs } from "@/contentlayer/generated"
 import Balancer from "react-wrap-balancer"
 
 import { Mdx } from "@/components/mdx/mdx-components"

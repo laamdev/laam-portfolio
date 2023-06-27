@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { allProjects } from "contentlayer/generated"
+import { allProjects } from "@/contentlayer/generated"
 import { DotIcon } from "lucide-react"
 import Balancer from "react-wrap-balancer"
 
@@ -74,16 +74,17 @@ export default async function ProjectPage({ params }: { params: any }) {
       {/* <script type="application/ld+json">
         {JSON.stringify(project.structuredData)}
       </script> */}
-      <section className="grid grid-cols-2">
+      <section className="grid gap-x-10 md:grid-cols-2">
         <div className="">
-          <h1 className="font-serif text-3xl font-black uppercase leading-tight tracking-tighter md:text-7xl">
+          <h1 className="font-serif text-4xl font-black uppercase leading-tight tracking-tighter md:text-7xl">
             <Balancer>{project.title}</Balancer>
           </h1>
 
-          <p className="prose-xl mt-5 max-w-[520px] text-zinc-300">
+          <p className="prose mt-5 max-w-prose text-zinc-300 md:prose-xl">
             {project.summary}
           </p>
-          <Button className="mt-10">
+
+          <Button size="sm" asChild className="mt-5 md:mt-10">
             <a href={project.siteUrl} target="_blank">
               Live site
             </a>
@@ -92,9 +93,9 @@ export default async function ProjectPage({ params }: { params: any }) {
 
         <div className="grid grid-cols-2 gap-x-10">
           <div className="flex flex-col gap-y-1">
-            <p className="text-xl font-medium capitalize">{project.category}</p>
+            <p className="text-xl font-medium capitalize">{project.agency}</p>
 
-            {project.category !== "personal" && (
+            {project.agency !== "personal" && (
               <p className="font-serif">@ {project.client}</p>
             )}
           </div>

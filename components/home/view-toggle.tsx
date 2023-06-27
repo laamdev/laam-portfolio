@@ -11,14 +11,18 @@ export const ViewToggle = ({
 }) => {
   return (
     <div className="flex items-center gap-x-2.5">
-      <ListIcon
-        onClick={() => setToggleViewMode((toggleViewMode = false))}
-        className={cn(toggleViewMode ? "opacity-30" : "opacity-100")}
-      />
-      <GridIcon
-        onClick={() => setToggleViewMode((toggleViewMode = true))}
-        className={cn(!toggleViewMode ? "opacity-30" : "opacity-100")}
-      />
+      <button>
+        <GridIcon
+          onClick={() => setToggleViewMode((toggleViewMode = true))}
+          className={cn(!toggleViewMode ? "opacity-30" : "opacity-100")}
+        />
+      </button>
+      <button>
+        <ListIcon
+          onClick={() => setToggleViewMode((toggleViewMode = false))}
+          className={cn(toggleViewMode ? "opacity-30" : "opacity-100")}
+        />
+      </button>
     </div>
   )
 }

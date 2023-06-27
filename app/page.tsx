@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { allProjects } from "contentlayer/generated"
+import { allProjects } from "@/contentlayer/generated"
 import { PlusIcon } from "lucide-react"
 import { Balancer } from "react-wrap-balancer"
 
-import { ProjectList } from "@/components/project/project-list"
+import { ProjectsContainer } from "@/components/project/projects-container"
 
 export const metadata: Metadata = {
   title: "Home",
@@ -52,7 +52,7 @@ export default async function IndexPage() {
       </h2>
      */}
 
-      <ProjectList projects={featuredProjects} />
+      <ProjectsContainer projects={featuredProjects} />
     </main>
   )
 }

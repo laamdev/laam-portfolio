@@ -23,25 +23,38 @@ var Project = defineDocumentType(() => ({
       type: "string",
       required: true
     },
-    category: {
+    isFeatured: {
+      type: "boolean",
+      default: false
+    },
+    agency: {
       type: "enum",
       options: ["freelance", "in-house", "personal"],
-      default: "freelance"
+      default: "freelance",
+      required: true
     },
-    year: {
-      type: "number"
+    category: {
+      type: "string",
+      required: true
     },
     client: {
       type: "string"
     },
+    year: {
+      type: "number",
+      required: true
+    },
     coverImage: {
-      type: "string"
+      type: "string",
+      required: true
     },
     summary: {
-      type: "string"
+      type: "string",
+      required: true
     },
     siteUrl: {
-      type: "string"
+      type: "string",
+      required: true
     },
     role: {
       type: "list",
@@ -52,10 +65,6 @@ var Project = defineDocumentType(() => ({
       type: "list",
       of: { type: "string" },
       required: true
-    },
-    isFeatured: {
-      type: "boolean",
-      default: false
     }
   },
   computedFields
@@ -120,4 +129,4 @@ export {
   Project,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-UQ6MBAO4.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-UR3YFYP7.mjs.map
