@@ -22,11 +22,11 @@ export const metadata: Metadata = {
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
   icons: {
-    icon: "/favicon/favicon.ico",
-    shortcut: "/favicon/favicon-16x16.png",
-    apple: "/favicon/apple-touch-icon.png",
+    icon: "/favicons/favicon.ico",
+    shortcut: "/favicons/favicon-16x16.png",
+    apple: "/favicons/apple-touch-icon.png",
   },
-  manifest: "/favicon/site.webmanifest",
+  manifest: "/favicons/site.webmanifest",
 }
 
 interface RootLayoutProps {
