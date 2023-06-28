@@ -21,6 +21,9 @@ export default async function IndexPage() {
   const featuredProjects = await allProjects.filter(
     (project) => project.isFeatured
   )
+  const orderedProjects = featuredProjects.sort(
+    (a: any, b: any) => b.year - a.yer
+  )
   return (
     <main className="container">
       <div className="mx-auto flex max-w-[980px] flex-col items-center gap-y-2.5 md:gap-y-0">
@@ -52,7 +55,7 @@ export default async function IndexPage() {
       </h2>
      */}
 
-      <ProjectsContainer projects={featuredProjects} />
+      <ProjectsContainer projects={orderedProjects} />
     </main>
   )
 }
