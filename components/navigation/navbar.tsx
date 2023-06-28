@@ -1,5 +1,3 @@
-import Link from "next/link"
-
 import { AnimatedLinks } from "@/components/global/animated-links"
 import { Logo } from "@/components/global/logo"
 
