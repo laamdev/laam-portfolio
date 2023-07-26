@@ -35,6 +35,7 @@ export type Project = {
   year: number
   coverImage: string
   summary: string
+  description: string
   siteUrl: string
   role: string[]
   stack: string[]

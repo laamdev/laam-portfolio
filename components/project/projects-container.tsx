@@ -1,21 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { ViewToggle } from "@/components/home/view-toggle"
-
-import { ProjectsGrid } from "./projects-grid"
-import { ProjectsList } from "./projects-list"
+import { ProjectsGrid } from "@/components/project/projects-grid"
+import { ProjectsList } from "@/components/project/projects-list"
 
 export const ProjectsContainer = ({ projects }: { projects: any }) => {
   const [toggleViewMode, setToggleViewMode] = useState(true)

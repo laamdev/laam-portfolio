@@ -1,6 +1,6 @@
 import { contacts, now } from "@/lib/constants"
+import { NowPlaying } from "@/components/about/now-playing"
 import { Clock } from "@/components/global/clock"
-import { Logo } from "@/components/global/logo"
 
 export const Footer = () => {
   return (
@@ -11,6 +11,9 @@ export const Footer = () => {
           <span>{` · `}</span>
           <span>{`Madrid, ES`}</span>
         </div>
+
+        <NowPlaying />
+
         <ul className="flex gap-x-5">
           {contacts.map((contact) => (
             <li

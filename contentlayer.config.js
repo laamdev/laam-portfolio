@@ -54,6 +54,10 @@ export const Project = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    description: {
+      type: "string",
+      required: true,
+    },
     siteUrl: {
       type: "string",
       required: true,

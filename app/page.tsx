@@ -27,10 +27,10 @@ export default async function IndexPage() {
   return (
     <main className="container">
       <div className="mx-auto flex max-w-[980px] flex-col items-center gap-y-2.5 md:gap-y-0">
-        <h1 className="text-center font-serif text-4xl font-extrabold uppercase leading-tight tracking-tighter md:text-7xl">
+        <h1 className="text-center font-serif text-2xl font-extrabold uppercase leading-tight tracking-tighter md:text-7xl">
           <Balancer>Luis Alejandro Anaya Marín</Balancer>
         </h1>
-        <h2 className="text-center text-2xl leading-tight tracking-tighter text-zinc-300 md:text-4xl">
+        <h2 className="text-center text-lg leading-tight tracking-tighter text-zinc-300 md:text-4xl">
           <Balancer>
             <br className="hidden sm:inline" />
             {`Full-stack developer specialized `}

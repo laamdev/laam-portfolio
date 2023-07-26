@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 
-export const ProjectCard = ({ className, project, idx }: any) => {
+export const ProjectGridCard = ({ className, project, idx }: any) => {
   return (
     <Link
       href={project.slug}
