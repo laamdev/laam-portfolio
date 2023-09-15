@@ -1,3 +1,3 @@
 # LAAM.DEV
 
-Full Stack Developer specialized in Next.js and Tailwind CSS.
+Full stack developer specialized in Next.js and Tailwind CSS. Baed in Madrid, Spain.
