@@ -1,14 +1,13 @@
 import type { Metadata } from "next"
 import Image from "next/image"
-import Link from "next/link"
 import { notFound } from "next/navigation"
 import { allProjects } from "@/contentlayer/generated"
-import { DotIcon } from "lucide-react"
 import Balancer from "react-wrap-balancer"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Mdx } from "@/components/mdx/mdx-components"
+
+// // import { Mdx } from "@/components/mdx/mdx-components"
 
 async function getProjectFromParams(params: any) {
   const slug = params?.slug?.join("/")
@@ -76,7 +75,7 @@ export default async function ProjectPage({ params }: { params: any }) {
       </script> */}
       <section className="grid gap-x-10 md:grid-cols-2">
         <div className="">
-          <h1 className="font-serif text-4xl font-black uppercase leading-tight tracking-tighter md:text-7xl">
+          <h1 className="font-serif text-4xl font-bold uppercase leading-tight tracking-tighter md:text-7xl">
             <Balancer>{project.title}</Balancer>
           </h1>
 
@@ -112,7 +111,7 @@ export default async function ProjectPage({ params }: { params: any }) {
                   <li key={roleIdx}>
                     <Badge
                       variant="outline"
-                      className="w-fit gap-x-1.5 font-serif text-xs uppercase"
+                      className="w-fit gap-x-1.5 text-base font-bold uppercase"
                     >
                       {role}
                     </Badge>

@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
     },
     {
-      url: "https://laam.dev/blog",
+      url: "https://laam.dev/snippets",
       lastModified: new Date(),
     },
   ]

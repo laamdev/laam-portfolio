@@ -2,14 +2,12 @@ const { fontFamily } = require("tailwindcss/defaultTheme")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
-  darkMode: ["class"],
   theme: {
     container: {
       center: true,
@@ -20,8 +18,11 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
-        serif: ["var(--font-serif)", ...fontFamily.serif],
+        sans: ["var(--font-lausanne)", ...fontFamily.sans],
+        serif: ["var(--font-machina)", ...fontFamily.serif],
+        // // sans: ["var(--font-supply)", ...fontFamily.sans],
+        // // serif: ["var(--font-brut)", ...fontFamily.serif],
+        // // mono: ["var(--font-machina)", ...fontFamily.mono],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -3,18 +3,21 @@ import { GithubIcon, InstagramIcon, LinkedinIcon, MailIcon } from "lucide-react"
 export const navLinks = [
   {
     id: 1,
+    filter: "",
     label: "work",
     href: "/",
   },
   {
     id: 2,
+    filter: "about",
     label: "about",
     href: "/about",
   },
   {
     id: 3,
-    label: "blog",
-    href: "/blog",
+    filter: "snippets",
+    label: "snippets",
+    href: "/snippets",
   },
 ]
 

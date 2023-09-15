@@ -22,4 +22,4 @@ export const pick = (obj: any, keys: any) => {
 }
 
 export const formatDate = (date: string): string =>
-  format(parseISO(date), "LLLL d, yyyy")
+  format(parseISO(date), "LLLL do yyyy")

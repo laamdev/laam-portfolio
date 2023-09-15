@@ -1,15 +1,213 @@
-import "./globals.css"
+import "@/app/globals.css"
 
 import { Metadata } from "next"
+import localFont from "next/font/local"
 import { Provider as BalancerProvider } from "react-wrap-balancer"
 
 import { siteConfig } from "@/config/site"
-import { fontSans, fontSerif } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Footer } from "@/components/navigation/footer"
-import { SiteHeader } from "@/components/navigation/site-header"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { ThemeProvider } from "@/components/theme-provider"
+import { Header } from "@/components/navigation/header"
+
+const supply = localFont({
+  src: [
+    {
+      path: "../public/fonts/supply-mono/thin.woff2",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/supply-mono/ultralight.woff2",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/supply-mono/light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/supply-mono/regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/supply-mono/medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/supply-mono/semibold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/supply-mono/black.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/supply-mono/black.woff2",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  display: "swap",
+  variable: "--font-supply",
+})
+const brut = localFont({
+  src: [
+    {
+      path: "../public/fonts/brut/regular-mono.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/brut/italic-mono.woff2",
+      weight: "400",
+      style: "italic",
+    },
+  ],
+  display: "swap",
+  variable: "--font-brut",
+})
+const machina = localFont({
+  src: [
+    {
+      path: "../public/fonts/neue-machina/ultralight.woff2",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/neue-machina/light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/neue-machina/regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/neue-machina/medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/neue-machina/bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/neue-machina/ultrabold.woff2",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/neue-machina/black.woff2",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  display: "swap",
+  variable: "--font-machina",
+})
+const lausanne = localFont({
+  src: [
+    {
+      path: "../public/fonts/lausanne/thin.woff2",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/lausanne/thin-italic.woff2",
+      weight: "100",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/lausanne/ultralight.woff2",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/lausanne/ultralight-italic.woff2",
+      weight: "200",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/lausanne/light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/lausanne/light-italic.woff2",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/lausanne/regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/lausanne/regular-italic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/lausanne/medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/lausanne/medium-italic.woff2",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/lausanne/semibold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/lausanne/semibold-italic.woff2",
+      weight: "600",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/lausanne/bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/lausanne/bold-italic.woff2",
+      weight: "700",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/lausanne/ultrabold.woff2",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/lausanne/ultrabold-italic.woff2",
+      weight: "800",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/lausanne/black.woff2",
+      weight: "900",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/lausanne/black-italic.woff2",
+      weight: "900",
+      style: "italic",
+    },
+  ],
+  display: "swap",
+  variable: "--font-lausanne",
+})
 
 export const metadata: Metadata = {
   title: {
@@ -41,20 +239,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-          fontSerif.variable
+          "min-h-screen font-sans antialiased",
+          supply.variable,
+          brut.variable,
+          machina.variable,
+          lausanne.variable
         )}
       >
         <BalancerProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
-              <div className="mt-32 flex-1">{children}</div>
-              <Footer />
-            </div>
-            <TailwindIndicator />
-          </ThemeProvider>
+          <div className="relative flex min-h-screen flex-col overflow-x-hidden text-foreground">
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </div>
         </BalancerProvider>
       </body>
     </html>

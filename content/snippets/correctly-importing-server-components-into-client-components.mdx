@@ -1,0 +1,100 @@
+---
+title: Correctly importing server components into client components
+publishedAt: "2023-08-03"
+summary: Setting up a fullstack application with Prisma and a PostgresSQL database in Railway using the Next 13 app directory.
+---
+
+Usually, when you want to use a component inside another, your first idea is to import it. The issue is that with this method, a server component imported into a client component is automatically converted into a client component. Here's an example:
+
+## Import method
+
+### Server Component (page)
+
+```jsx
+import ClientComponent from "@/components/client-component"
+
+export default function HomePage() {
+  return (
+    <main>
+      <p>Server component (page)</p>
+      <ClientComponent />
+    </main>
+  )
+}
+```
+
+### Server Component
+
+```jsx
+export default function ServerComponent() {
+  return <p>Server component</p>
+}
+```
+
+### Client Component
+
+```jsx
+"use client"
+
+import ServerComponent from "@/components/server-component"
+
+export default function ClientComponent() {
+  return (
+    <main>
+      <p>Client component</p>
+      <ServerComponent /> // Becomes client component
+    </main>
+  )
+}
+```
+
+This circumstance has given rise to the popular missconception that server components cannot be used inside client components, but that's not at all true. If you include a server component inside a client component as part of the latters children prop instead of importing it, your server component will remain in the server. Here's how to do it:
+
+## Children method
+
+### Server Component (page)
+
+```jsx
+import ClientComponent from "@/components/client-component"
+
+export default function HomePage() {
+  return (
+    <main>
+      <p>Server component (page)</p>
+      <ClientComponent>
+        <ServerComponent />
+      </ClientComponent>
+    </main>
+  )
+}
+```
+
+### Server Component
+
+```jsx
+export default function ServerComponent() {
+  return <p>Server component</p>
+}
+```
+
+### Client Component
+
+```jsx
+"use client"
+
+import { ReactNode } from 'react'
+import ServerComponent from "@/components/server-component"
+
+type ClientComponentProps = {
+  children: ReactNode
+}
+
+export default function ClientComponent({ children }: ClientComponentProps) {
+  return (
+    <main>
+      <p>Client component</p>
+        {children}
+    </main>
+  )
+}
+```

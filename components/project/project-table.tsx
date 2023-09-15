@@ -64,7 +64,7 @@ export const ProjectTable = ({
                     <h5 className="col-span-1 text-left text-sm tracking-wider text-zinc-500">
                       {row.label}
                     </h5>
-                    <h4 className="col-span-2 text-right font-mono text-lg font-semibold">
+                    <h4 className="col-span-2 text-right font-serif text-lg font-semibold">
                       {row.value}
                     </h4>
                   </div>

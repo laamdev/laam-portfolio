@@ -21,7 +21,7 @@ export const NowPlaying = () => {
   if (isLoading) return <div>Loading...</div>
 
   return (
-    <div className="flex items-center gap-x-2">
+    <div className="hidden max-w-xs items-center gap-x-1 md:flex md:gap-x-2.5">
       <a
         href={`https://open.spotify.com/user/neverwas333333333`}
         target="_blank"
@@ -29,8 +29,8 @@ export const NowPlaying = () => {
       >
         <TbBrandSpotify className="h-4 w-4" />
       </a>
-      {data.isPlaying ? (
-        <div className="flex gap-x-2">
+      {data?.isPlaying ? (
+        <div className="flex gap-x-1 whitespace-nowrap md:gap-x-2.5">
           <a href={data.songUrl} target="_blank" rel="noreferrer">
             {data.title}
           </a>

@@ -1,38 +1,38 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { allBlogs } from "@/contentlayer/generated"
+import { allSnippets } from "@/contentlayer/generated"
 import Balancer from "react-wrap-balancer"
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Snippets",
   description: "Read my thoughts on software development, design, and more.",
   openGraph: {
-    title: "Blog",
+    title: "Snippets",
     description: "Read my thoughts on software development, design, and more.",
   },
 }
 
-export default async function BlogPage() {
+export default async function SnippetsPage() {
   return (
     <section>
-      <h1 className="mb-5 font-mono text-3xl font-bold">
-        <Balancer>Blog</Balancer>
+      <h1 className="mb-5 font-serif text-3xl font-bold">
+        <Balancer>Snippets</Balancer>
       </h1>
-      {allBlogs
+      {allSnippets
         .sort((a, b) => {
           if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
             return -1
           }
           return 1
         })
-        .map((post) => (
+        .map((snippet) => (
           <Link
-            key={post.slug}
+            key={snippet.slug}
             className="mb-4 flex flex-col space-y-1"
-            href={`${post.slug}`}
+            href={snippet.slug}
           >
             <div className="flex w-full flex-col">
-              <p>{post.title}</p>
+              <p>{snippet.title}</p>
             </div>
           </Link>
         ))}

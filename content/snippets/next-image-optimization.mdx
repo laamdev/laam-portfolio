@@ -1,0 +1,37 @@
+---
+title: Next Image Optimization
+publishedAt: "2023-01-02"
+summary: Tips for improving the default optimization of the next image component
+---
+
+# Next Image Optimizaiton
+
+## Use the sizes prop
+
+- Can be used with the fill prop in the Image component + relative and aspect-[4/3] classes in the parent component.
+
+- Can be used with a width and height prop. In remote images these props only determine the aspect ratio of the image, not the resolution.
+
+- Determine the sizes with the RespImageLint tab in the bookmarks.
+
+```jsx
+
+interface Props {
+    src: string,
+    alt: string,
+    priority?: boolean
+}
+
+export default function CustomImage({ src, alt, priority }: Props) {
+    <Image
+        className="w-full h-auto rounded-lg mx-auto"
+        src={src}
+        width={650}
+        height={366}
+        sizes="(min-width: 720px), 650px, calc(95.5w - 19px)"
+        alt={alt}
+        priority={!!priority}
+    />
+}
+
+```

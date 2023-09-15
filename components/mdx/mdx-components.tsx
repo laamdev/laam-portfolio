@@ -31,7 +31,7 @@ export function Mdx({ code }: MdxProps) {
   const Component = useMDXComponent(code)
 
   return (
-    <div className="mdx">
+    <div className="prose prose-invert">
       <Component components={components} />
     </div>
   )

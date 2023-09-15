@@ -21,16 +21,17 @@ export default async function IndexPage() {
   const featuredProjects = await allProjects.filter(
     (project) => project.isFeatured
   )
-  const orderedProjects = featuredProjects.sort(
+  const orderedProjects = await featuredProjects.sort(
     (a: any, b: any) => b.year - a.yer
   )
   return (
     <main className="container">
       <div className="mx-auto flex max-w-[980px] flex-col items-center gap-y-2.5 md:gap-y-0">
-        <h1 className="text-center font-serif text-2xl font-extrabold uppercase leading-tight tracking-tighter md:text-7xl">
+        {/* <h1 className="text-center font-serif text-2xl font-extrabold uppercase leading-tight tracking-tighter md:text-7xl">
           <Balancer>Luis Alejandro Anaya Marín</Balancer>
-        </h1>
+        </h1> */}
         <h2 className="text-center text-lg leading-tight tracking-tighter text-zinc-300 md:text-4xl">
+          <div className="font-serif text-9xl font-bold text-primary">LAAM</div>
           <Balancer>
             <br className="hidden sm:inline" />
             {`Full-stack developer specialized `}

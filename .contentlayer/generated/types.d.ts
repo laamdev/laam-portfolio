@@ -8,20 +8,6 @@ export { isType } from 'contentlayer/client'
 export type { Markdown, MDX, ImageFieldData, IsoDateTimeString }
 
 /** Document types */
-export type Blog = {
-  /** File path relative to `contentDirPath` */
-  _id: string
-  _raw: Local.RawDocumentData
-  type: 'Blog'
-  title: string
-  publishedAt: string
-  summary?: string | undefined
-  /** MDX file body */
-  body: MDX
-  slug: string
-  slugAsParams: string
-}
-
 export type Project = {
   /** File path relative to `contentDirPath` */
   _id: string
@@ -43,6 +29,20 @@ export type Project = {
   body: MDX
   slug: string
   slugAsParams: string
+}
+
+export type Snippet = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'Snippet'
+  title: string
+  summary?: string | undefined
+  publishedAt: IsoDateTimeString
+  /** MDX file body */
+  body: MDX
+  slug: string
+  slugAsParams: string
 }  
 
 /** Nested types */
@@ -53,8 +53,8 @@ export type Project = {
 export type AllTypes = DocumentTypes | NestedTypes
 export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 
-export type DocumentTypes = Blog | Project
-export type DocumentTypeNames = 'Blog' | 'Project'
+export type DocumentTypes = Project | Snippet
+export type DocumentTypeNames = 'Project' | 'Snippet'
 
 export type NestedTypes = never
 export type NestedTypeNames = never
@@ -62,7 +62,7 @@ export type NestedTypeNames = never
 export type DataExports = {
   allDocuments: DocumentTypes[]
   allProjects: Project[]
-  allBlogs: Blog[]
+  allSnippets: Snippet[]
 }
 
 
@@ -82,8 +82,8 @@ declare global {
 }
 
 export type DocumentTypeMap = {
-  Blog: Blog
   Project: Project
+  Snippet: Snippet
 }
 
 export type NestedTypeMap = {

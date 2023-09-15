@@ -15,7 +15,7 @@ export const ProjectGridCard = ({ className, project, idx }: any) => {
           idx % 2 ? "-ml-20 text-right" : "-mr-20 text-left"
         )}
       >
-        <h3 className="font-serif text-3xl font-black uppercase leading-none tracking-tighter md:text-7xl">
+        <h3 className="font-serif text-3xl font-bold uppercase leading-none tracking-tighter md:text-7xl">
           {project.title}
         </h3>
 

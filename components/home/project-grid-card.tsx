@@ -18,14 +18,16 @@ export const ProjectGridCard = ({ project, idx }: any) => {
       >
         <h3
           className={cn(
-            "-mt-2 w-full font-serif text-xl font-black uppercase leading-none tracking-tighter md:mt-0 md:text-7xl",
+            "-mt-2 w-full font-serif text-xl font-bold uppercase leading-none tracking-tighter md:mt-0 md:text-7xl",
             idx % 2 ? "text-right" : "text-left"
           )}
         >
           {project.title}
         </h3>
 
-        <p className="text-sm md:text-lg">{project.description}</p>
+        <p className="text-sm text-zinc-300 md:text-lg">
+          {project.description}
+        </p>
       </div>
 
       <div
@@ -35,13 +37,13 @@ export const ProjectGridCard = ({ project, idx }: any) => {
         )}
         style={{ writingMode: "vertical-rl" }}
       >
-        <span className="whitespace-nowrap bg-zinc-700 px-0.5 py-1.5 text-zinc-300">
+        <span className="whitespace-nowrap bg-primary px-0.5 py-1.5 text-primary-foreground">
           {project.category}
         </span>
-        <span className="whitespace-nowrap bg-zinc-700 px-0.5 py-1.5 text-zinc-300">
+        <span className="whitespace-nowrap bg-primary px-0.5 py-1.5 text-primary-foreground">
           {project.agency}
         </span>
-        <span className="whitespace-nowrap bg-zinc-700 px-0.5 py-1.5 text-zinc-300">
+        <span className="whitespace-nowrap bg-primary px-0.5 py-1.5 text-primary-foreground">
           {project.year}
         </span>
       </div>
