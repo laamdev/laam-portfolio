@@ -25,20 +25,19 @@ export default async function IndexPage() {
     (a: any, b: any) => b.year - a.yer
   )
   return (
-    <main className="container">
+    <main>
       <div className="mx-auto flex max-w-[980px] flex-col items-center gap-y-2.5 md:gap-y-0">
         {/* <h1 className="text-center font-serif text-2xl font-extrabold uppercase leading-tight tracking-tighter md:text-7xl">
           <Balancer>Luis Alejandro Anaya Marín</Balancer>
         </h1> */}
-        <h2 className="text-center text-lg leading-tight tracking-tighter text-zinc-300 md:text-4xl">
-          <div className="font-serif text-9xl font-bold text-primary">LAAM</div>
+        {/* <h2 className="text-center text-lg font-bold leading-tight tracking-tighter text-primary md:text-4xl">
           <Balancer>
             <br className="hidden sm:inline" />
-            {`Full-stack developer specialized `}
+            {`Creative developer specialized `}
             <br className="hidden sm:inline" />
             {`in Next.js and Tailwind CSS.`}
           </Balancer>
-        </h2>
+        </h2> */}
         {/* <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
           Beautifully designed components <br className="hidden sm:inline" />
           built with Radix UI and Tailwind CSS.

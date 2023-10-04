@@ -10,11 +10,16 @@ export const ProjectsContainer = ({ projects }: { projects: any }) => {
   const [toggleViewMode, setToggleViewMode] = useState(true)
 
   return (
-    <div className="mt-20">
-      <ViewToggle
-        toggleViewMode={toggleViewMode}
-        setToggleViewMode={setToggleViewMode}
-      />
+    <div>
+      <div className="flex justify-between border-b p-5">
+        <h1 className="font-serif text-5xl font-black uppercase md:text-9xl">
+          Work
+        </h1>
+        <ViewToggle
+          toggleViewMode={toggleViewMode}
+          setToggleViewMode={setToggleViewMode}
+        />
+      </div>
 
       {toggleViewMode ? (
         <ProjectsGrid projects={projects} />

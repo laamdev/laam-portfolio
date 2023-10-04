@@ -8,10 +8,14 @@ const CustomLink = ({ href, children }: { href: string; children: string }) => {
   }
 
   if (href.startsWith("#")) {
-    return <a />
+    return <a href={href}>{children}</a>
   }
 
-  return <a target="_blank" rel="noopener noreferrer" />
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  )
 }
 
 const RoundedImage = ({ src, alt }: { src: string; alt: string }) => {

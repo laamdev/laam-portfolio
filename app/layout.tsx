@@ -239,7 +239,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
       <body
         className={cn(
-          "min-h-screen font-sans antialiased",
+          "font-sans antialiased",
           supply.variable,
           brut.variable,
           machina.variable,
@@ -247,9 +247,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
       >
         <BalancerProvider>
-          <div className="relative flex min-h-screen flex-col overflow-x-hidden text-foreground">
+          <div>
             <Header />
-            <main>{children}</main>
+            <main className="min-h-screen">{children}</main>
             <Footer />
           </div>
         </BalancerProvider>

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import { allProjects } from "@/contentlayer/generated"
 import Balancer from "react-wrap-balancer"
 
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
@@ -69,19 +70,52 @@ export default async function ProjectPage({ params }: { params: any }) {
   }
 
   return (
-    <main className="container">
+    <main>
       {/* <script type="application/ld+json">
         {JSON.stringify(project.structuredData)}
       </script> */}
-      <section className="grid gap-x-10 md:grid-cols-2">
-        <div className="">
+      <section className="grid gap-x-5 border-b md:grid-cols-2 md:divide-x">
+        <div className="col-span-1 flex max-w-xl flex-col gap-y-2.5 border-b p-5 md:border-0">
+          <Button asChild className="w-fit" variant="outline">
+            <a href={project.siteUrl} target="_blank">
+              Live site
+            </a>
+          </Button>
+          <h1 className="font-serif text-5xl font-black uppercase md:text-7xl">
+            <Balancer>{project.title}</Balancer>
+          </h1>
+          <div className="prose-lg prose-p:text-primary">
+            <p>
+              Bacon ipsum dolor amet enim burgdoggen id nulla flank aliquip
+              jerky veniam minim. Enim pastrami filet mignon ut excepteur
+              drumstick, ea ball tip eiusmod nisi ut shoulder. Do nisi officia
+              aliqua pork chop, pork loin t-bone tail pancetta exercitation. Ut
+              ipsum occaecat biltong, irure nulla aliquip elit t-bone chislic eu
+              anim bacon proident sirloin.
+            </p>
+          </div>
+        </div>
+        <div>
+          <AspectRatio ratio={3 / 2}>
+            <Image
+              src={project.coverImage!}
+              alt={project.title}
+              fill
+              className="object-cover object-center grayscale"
+            />
+          </AspectRatio>
+          {/* <div className="relative aspect-square">
+            <div className="absolute inset-0 z-10 bg-primary mix-blend-overlay" />
+            
+          </div> */}
+        </div>
+      </section>
+
+      {/* <div className="">
           <h1 className="font-serif text-4xl font-bold uppercase leading-tight tracking-tighter md:text-7xl">
             <Balancer>{project.title}</Balancer>
           </h1>
 
-          <p className="prose mt-5 max-w-prose text-zinc-300 md:prose-xl">
-            {project.summary}
-          </p>
 
           <Button size="sm" asChild className="mt-5 md:mt-10">
             <a href={project.siteUrl} target="_blank">
@@ -146,8 +180,7 @@ export default async function ProjectPage({ params }: { params: any }) {
             fill
             className="rounded bg-zinc-900 object-cover object-center"
           />
-        </div>
-      </section>
+        </div> */}
     </main>
   )
 }

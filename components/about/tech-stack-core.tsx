@@ -7,9 +7,9 @@ export const TechStackCore = () => {
       <div className="border-b p-5 font-serif text-3xl font-black uppercase">
         Core
       </div>
-      <div className="flex flex-wrap gap-x-10 gap-y-5 p-5 text-lg">
+      <div className="grid gap-x-10 gap-y-5 p-5 text-lg md:grid-cols-2">
         {techStack.core.map((tech) => (
-          <div>
+          <div className="flex items-center justify-between gap-x-5">
             <p className="text-xs md:text-sm">{tech.category}</p>
 
             <Badge variant="outline" className="mt-1.5">

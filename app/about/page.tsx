@@ -9,17 +9,17 @@ import { TechStackOther } from "@/components/about/tech-stack-other"
 
 export default async function AboutPage() {
   return (
-    <main className="pt-16 md:pt-24">
-      <div className="border-b p-5 font-serif text-5xl font-black uppercase md:text-9xl">
-        About Me
-      </div>
+    <main>
+      <h1 className="border-b p-5 font-serif text-5xl font-black uppercase md:text-9xl">
+        About
+      </h1>
       <div className="grid border-b md:grid-cols-2">
-        <div className="col-span-1 border-r p-5">
+        <div className="col-span-1 p-5 md:border-r">
           <p className="text-base md:text-xl">
             {`I'm Luis Alejandro Anaya Marín, a freelance full stack web developer based in Madrid. I specialize in Next.js and Tailwind CSS.`}
           </p>
         </div>
-        <div className="relative aspect-square">
+        <div className="relative aspect-square border-t md:border-t-0">
           <div className="absolute inset-0 z-10 bg-primary mix-blend-overlay" />
           <Image
             src="/images/about.webp"

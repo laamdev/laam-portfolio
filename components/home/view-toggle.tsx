@@ -10,7 +10,7 @@ export const ViewToggle = ({
   setToggleViewMode: (value: boolean) => void
 }) => {
   return (
-    <div className="flex items-center gap-x-2.5">
+    <div className="flex items-end gap-x-2.5">
       <button>
         <GridIcon
           onClick={() => setToggleViewMode((toggleViewMode = true))}
