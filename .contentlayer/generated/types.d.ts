@@ -23,8 +23,9 @@ export type Project = {
   summary: string
   description: string
   siteUrl: string
+  codeUrl?: string | undefined
   role: string[]
-  stack: string[]
+  stack?: Stack[] | undefined
   /** MDX file body */
   body: MDX
   slug: string
@@ -46,7 +47,15 @@ export type Snippet = {
 }  
 
 /** Nested types */
-  
+export type Stack = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'Stack'
+  tech: string
+  category: string
+
+}  
 
 /** Helper types */
 
@@ -56,8 +65,8 @@ export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 export type DocumentTypes = Project | Snippet
 export type DocumentTypeNames = 'Project' | 'Snippet'
 
-export type NestedTypes = never
-export type NestedTypeNames = never
+export type NestedTypes = Stack
+export type NestedTypeNames = 'Stack'
 
 export type DataExports = {
   allDocuments: DocumentTypes[]
@@ -87,7 +96,7 @@ export type DocumentTypeMap = {
 }
 
 export type NestedTypeMap = {
-
+  Stack: Stack
 }
 
  

@@ -6,7 +6,10 @@ import Balancer from "react-wrap-balancer"
 
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
+import { TechStackCore } from "@/components/about/tech-stack-core"
+import { Mdx } from "@/components/mdx/mdx-components"
+import { ProjectInfoDrawer } from "@/components/project/project-info-drawer"
 
 // // import { Mdx } from "@/components/mdx/mdx-components"
 
@@ -74,113 +77,120 @@ export default async function ProjectPage({ params }: { params: any }) {
       {/* <script type="application/ld+json">
         {JSON.stringify(project.structuredData)}
       </script> */}
-      <section className="grid gap-x-5 border-b md:grid-cols-2 md:divide-x">
-        <div className="col-span-1 flex max-w-xl flex-col gap-y-2.5 border-b p-5 md:border-0">
-          <Button asChild className="w-fit" variant="outline">
-            <a href={project.siteUrl} target="_blank">
-              Live site
-            </a>
-          </Button>
-          <h1 className="font-serif text-5xl font-black uppercase md:text-7xl">
-            <Balancer>{project.title}</Balancer>
-          </h1>
-          <div className="prose-lg prose-p:text-primary">
+      <div className="flex flex-col gap-y-5 border-b p-5 md:flex-row md:justify-between md:gap-x-10 md:gap-y-0">
+        <h1 className="font-serif text-5xl font-black uppercase md:self-center md:text-9xl">
+          <Balancer>{project.title}</Balancer>
+        </h1>
+
+        <div className="md:self-end">
+          <div className="uppercase md:text-right">
+            <p>{project.category}</p>
             <p>
-              Bacon ipsum dolor amet enim burgdoggen id nulla flank aliquip
-              jerky veniam minim. Enim pastrami filet mignon ut excepteur
-              drumstick, ea ball tip eiusmod nisi ut shoulder. Do nisi officia
-              aliqua pork chop, pork loin t-bone tail pancetta exercitation. Ut
-              ipsum occaecat biltong, irure nulla aliquip elit t-bone chislic eu
-              anim bacon proident sirloin.
+              {project.agency} {project.year}
             </p>
+            <p>{project.summary}</p>
           </div>
         </div>
-        <div>
+
+        {/* <Button asChild className="w-fit self-end" variant="outline">
+          <a href={project.siteUrl} target="_blank">
+            Live site
+          </a>
+        </Button> */}
+      </div>
+
+      <section className="grid border-b md:grid-cols-2 md:divide-x">
+        <div className="flex flex-col justify-between">
+          <p className="border-t p-5 font-serif text-xl md:border-t-0 md:text-3xl">
+            {project.description}
+          </p>
+          <div className="grid w-full grid-cols-3 justify-between divide-x border-t">
+            <a href={project.siteUrl} target="_blank" rel="noreferrer">
+              <div className="p-5 text-center font-medium uppercase hover:bg-primary hover:text-background">
+                Live Site
+              </div>
+            </a>
+            <div>
+              {project.codeUrl && (
+                <a href={project.codeUrl} target="_blank" rel="noreferrer">
+                  <div className="p-5 text-center font-medium  uppercase hover:bg-primary hover:text-background">
+                    Code Repo
+                  </div>
+                </a>
+              )}
+            </div>
+            <div className="">
+              <ProjectInfoDrawer body={project.body.code} />
+            </div>
+            {/* <div className="flex gap-x-2.5">
+              <a
+                href={project.siteUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={buttonVariants({
+                  variant: "default",
+                  className: "cursor-pointer",
+                })}
+              >
+                Live Site
+              </a>
+
+              {project.codeUrl && (
+                <a
+                  href={project.codeUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={buttonVariants({
+                    variant: "default",
+                    className: "cursor-pointer",
+                  })}
+                >
+                  Code Repo
+                </a>
+              )}
+            </div>
+
+           */}
+          </div>
+        </div>
+        <div className="row-start-1 md:row-auto">
           <AspectRatio ratio={3 / 2}>
             <Image
               src={project.coverImage!}
               alt={project.title}
               fill
-              className="object-cover object-center grayscale"
+              className="object-cover object-center"
             />
           </AspectRatio>
-          {/* <div className="relative aspect-square">
-            <div className="absolute inset-0 z-10 bg-primary mix-blend-overlay" />
-            
-          </div> */}
         </div>
       </section>
 
-      {/* <div className="">
-          <h1 className="font-serif text-4xl font-bold uppercase leading-tight tracking-tighter md:text-7xl">
-            <Balancer>{project.title}</Balancer>
-          </h1>
-
-
-          <Button size="sm" asChild className="mt-5 md:mt-10">
-            <a href={project.siteUrl} target="_blank">
-              Live site
-            </a>
-          </Button>
+      <div className="grid border-b md:grid-cols-3">
+        <div className="border-b p-5 text-lg md:col-span-1 md:grid md:place-content-center md:border-b-0 md:border-r">
+          <h2 className="font-serif text-5xl font-black uppercase md:text-9xl">
+            Stack
+          </h2>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-10">
-          <div className="flex flex-col gap-y-1">
-            <p className="text-xl font-medium capitalize">{project.agency}</p>
+        <div className="md:col-span-2">
+          <div className="flex flex-col">
+            <div className="grid gap-x-10 gap-y-5 p-5 text-lg md:grid-cols-2">
+              {project?.stack?.map((tech) => (
+                <div className="flex items-center justify-between gap-x-5">
+                  <p className="text-sm md:text-base">{tech.category}</p>
 
-            {project.agency !== "personal" && (
-              <p className="font-serif">@ {project.client}</p>
-            )}
-          </div>
-
-          <div className="flex flex-col gap-y-10">
-            <p className="font-serif text-xl font-medium">{project.year}</p>
-          </div>
-
-          <div className="col-span-2 mt-10 flex flex-col gap-y-10">
-            <div>
-              <p className="font-light text-zinc-400">Roles</p>
-              <ul className="mt-2.5 flex flex-wrap gap-2.5">
-                {project.role?.map((role: string, roleIdx: number) => (
-                  <li key={roleIdx}>
-                    <Badge
-                      variant="outline"
-                      className="w-fit gap-x-1.5 text-base font-bold uppercase"
-                    >
-                      {role}
-                    </Badge>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="font-light text-zinc-400">Tech Stack</p>
-              <ul className="mt-2.5 flex flex-wrap gap-2.5">
-                {project.stack?.map((stack: string, stackIdx: number) => (
-                  <li key={stackIdx}>
-                    <Badge
-                      variant="outline"
-                      className="w-fit gap-x-1.5 font-serif text-xs uppercase"
-                    >
-                      {stack}
-                    </Badge>
-                  </li>
-                ))}
-              </ul>
+                  <Badge
+                    variant="outline"
+                    className="pointer-events-none text-sm md:text-base"
+                  >
+                    {tech.tech}
+                  </Badge>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </section>
-
-      <section className="mt-20">
-        <div className="relative aspect-video">
-          <Image
-            src={project.coverImage!}
-            alt={project.title}
-            fill
-            className="rounded bg-zinc-900 object-cover object-center"
-          />
-        </div> */}
+      </div>
     </main>
   )
 }

@@ -8,7 +8,10 @@ export const ProjectListCard = ({
   projectNumber: number
 }) => {
   return (
-    <Link href={project.slug} className="flex items-center justify-between p-5">
+    <Link
+      href={project.slug}
+      className="flex items-center justify-between p-5 hover:bg-primary hover:text-background"
+    >
       <div className="flex items-baseline gap-x-10">
         <div className="tabular-nums">
           {projectNumber < 10 ? `0${projectNumber}` : projectNumber}

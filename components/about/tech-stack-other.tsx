@@ -10,12 +10,7 @@ export const TechStackOther = () => {
       <div className="flex flex-wrap gap-5 p-5 text-lg">
         {techStack.other.map((tech) => (
           <Badge variant="outline">
-            <a
-              href={tech.link}
-              target="_blank"
-              rel="noreferrer"
-              className="font-serif text-xs font-bold uppercase md:text-sm"
-            >
+            <a href={tech.link} target="_blank" rel="noreferrer">
               {tech.technology}
             </a>
           </Badge>

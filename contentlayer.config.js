@@ -1,4 +1,8 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files"
+import {
+  defineDocumentType,
+  defineNestedType,
+  makeSource,
+} from "contentlayer/source-files"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypePrettyCode from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
@@ -15,6 +19,14 @@ const computedFields = {
     resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
   },
 }
+
+const Stack = defineNestedType(() => ({
+  name: "Stack",
+  fields: {
+    tech: { type: "string", required: true },
+    category: { type: "string", required: true },
+  },
+}))
 
 export const Project = defineDocumentType(() => ({
   name: "Project",
@@ -62,6 +74,9 @@ export const Project = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    codeUrl: {
+      type: "string",
+    },
     role: {
       type: "list",
       of: { type: "string" },
@@ -69,8 +84,7 @@ export const Project = defineDocumentType(() => ({
     },
     stack: {
       type: "list",
-      of: { type: "string" },
-      required: true,
+      of: Stack,
     },
   },
   computedFields,

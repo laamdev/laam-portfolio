@@ -12,13 +12,8 @@ export const TechStackCore = () => {
           <div className="flex items-center justify-between gap-x-5">
             <p className="text-xs md:text-sm">{tech.category}</p>
 
-            <Badge variant="outline" className="mt-1.5">
-              <a
-                href={tech.link}
-                target="_blank"
-                rel="noreferrer"
-                className="font-serif text-xs font-bold uppercase md:text-sm"
-              >
+            <Badge variant="outline">
+              <a href={tech.link} target="_blank" rel="noreferrer">
                 {tech.technology}
               </a>
             </Badge>
