@@ -140,7 +140,7 @@ export const ContactForm = () => {
                     <SelectContent>
                       <ScrollArea className="h-48">
                         {countries.map((country) => (
-                          <SelectItem value={country.code}>
+                          <SelectItem key={country.code} value={country.code}>
                             {country.name}
                           </SelectItem>
                         ))}

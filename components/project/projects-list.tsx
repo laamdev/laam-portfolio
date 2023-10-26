@@ -5,8 +5,8 @@ export const ProjectsList = ({ projects }: { projects: any }) => {
     <div className="grid divide-y border-b">
       {projects.map((project: any, projectIdx: number) => (
         <ProjectListCard
-          project={project}
           key={projectIdx}
+          project={project}
           projectNumber={projectIdx + 1}
         />
       ))}

@@ -31,7 +31,7 @@ export const techStack = {
       link: "https://www.sanity.io",
     },
     {
-      technology: "Framer",
+      technology: "Framer Motion",
       category: "Animation",
       link: "https://www.framer.com/motion/introduction",
     },

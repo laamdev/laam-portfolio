@@ -37,6 +37,10 @@ export const Project = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    priority: {
+      type: "number",
+      required: true,
+    },
     isFeatured: {
       type: "boolean",
       default: false,
@@ -105,6 +109,10 @@ export const Snippet = defineDocumentType(() => ({
     publishedAt: {
       type: "date",
       required: true,
+    },
+    isFeatured: {
+      type: "boolean",
+      default: false,
     },
   },
   computedFields,

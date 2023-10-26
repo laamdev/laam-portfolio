@@ -77,12 +77,12 @@ export default async function ProjectPage({ params }: { params: any }) {
       {/* <script type="application/ld+json">
         {JSON.stringify(project.structuredData)}
       </script> */}
-      <div className="flex flex-col gap-y-5 border-b p-5 md:flex-row md:justify-between md:gap-x-10 md:gap-y-0">
-        <h1 className="font-serif text-5xl font-black uppercase md:self-center md:text-9xl">
+      <div className="grid gap-y-5 border-b p-5 md:grid-cols-3">
+        <h1 className="col-span-2 font-serif text-4xl font-black uppercase md:self-center md:text-9xl">
           <Balancer>{project.title}</Balancer>
         </h1>
 
-        <div className="md:self-end">
+        <div className="col-span-1 text-base md:self-end md:text-lg">
           <div className="uppercase md:text-right">
             <p>{project.category}</p>
             <p>
@@ -91,12 +91,6 @@ export default async function ProjectPage({ params }: { params: any }) {
             <p>{project.summary}</p>
           </div>
         </div>
-
-        {/* <Button asChild className="w-fit self-end" variant="outline">
-          <a href={project.siteUrl} target="_blank">
-            Live site
-          </a>
-        </Button> */}
       </div>
 
       <section className="grid border-b md:grid-cols-2 md:divide-x">
@@ -107,14 +101,14 @@ export default async function ProjectPage({ params }: { params: any }) {
           <div className="grid w-full grid-cols-3 justify-between divide-x border-t">
             <a href={project.siteUrl} target="_blank" rel="noreferrer">
               <div className="p-5 text-center font-medium uppercase hover:bg-primary hover:text-background">
-                Live Site
+                Site
               </div>
             </a>
             <div>
               {project.codeUrl && (
                 <a href={project.codeUrl} target="_blank" rel="noreferrer">
                   <div className="p-5 text-center font-medium  uppercase hover:bg-primary hover:text-background">
-                    Code Repo
+                    Code
                   </div>
                 </a>
               )}

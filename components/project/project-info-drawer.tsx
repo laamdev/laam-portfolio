@@ -10,7 +10,7 @@ export const ProjectInfoDrawer = ({ body }: { body: any }) => {
     <Drawer.Root>
       <Drawer.Trigger asChild>
         <button className="w-full p-5 text-center font-medium uppercase hover:bg-primary hover:text-background">
-          More Info
+          More
         </button>
       </Drawer.Trigger>
       <Drawer.Portal>

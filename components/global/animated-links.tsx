@@ -14,8 +14,8 @@ export const AnimatedLinks = () => {
     <div className="flex space-x-2 rounded-full bg-zinc-950/75 p-3 backdrop-blur">
       {navLinks.map((navLink) => (
         <Link
-          href={navLink.href}
           key={navLink.id}
+          href={navLink.href}
           // // onClick={() => setActiveTab(navLink.id)}
           className={
             (cn(pathname.startsWith(navLink.href) ? "" : "hover:text-white/60"),

@@ -74,20 +74,20 @@ export default async function SnippetPage({ params }: { params: any }) {
   }
 
   return (
-    <section>
+    <section className="grid border-b md:grid-cols-2 md:divide-x">
       {/* <script type="application/ld+json">
         {JSON.stringify(snippet.structuredData)}
       </script> */}
-      <h1 className="font-serif text-4xl font-bold">
-        <Balancer>{snippet.title}</Balancer>
-      </h1>
-      <div className="mb-8 mt-4 grid max-w-[650px] grid-cols-[auto_1fr_auto] items-center font-serif text-sm">
-        <div className="rounded-md bg-zinc-100 px-2 py-1 tracking-tighter dark:bg-zinc-800">
-          {formatDate(snippet.publishedAt)}
-        </div>
-        <div className="mx-2 h-[0.2em] bg-zinc-50 dark:bg-zinc-800" />
+      <div className="border-b p-5 md:border-b-0">
+        <h1 className="font-serif text-3xl font-bold md:text-5xl">
+          <Balancer>{snippet.title}</Balancer>
+        </h1>
+        {/* <div>{formatDate(snippet.publishedAt)}</div> */}
       </div>
-      <Mdx code={snippet.body.code} />
+
+      <div className="prose-base prose-invert mx-auto w-full max-w-prose p-5 md:prose-lg">
+        <Mdx code={snippet.body.code} />
+      </div>
     </section>
   )
 }

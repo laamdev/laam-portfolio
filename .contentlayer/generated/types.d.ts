@@ -14,6 +14,7 @@ export type Project = {
   _raw: Local.RawDocumentData
   type: 'Project'
   title: string
+  priority: number
   isFeatured: boolean
   agency: 'freelance' | 'in-house' | 'personal'
   category: string
@@ -40,6 +41,7 @@ export type Snippet = {
   title: string
   summary?: string | undefined
   publishedAt: IsoDateTimeString
+  isFeatured: boolean
   /** MDX file body */
   body: MDX
   slug: string
