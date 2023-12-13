@@ -1,0 +1,42 @@
+---
+isFeatured: true
+title: Solving the "logical and" zero issue in JSX
+cover: /images/snippets/solving-the-logical-and-zero-issue-in-jsx/cover.webp
+pubDate: Nov 07 2023,
+---
+
+## Issue
+
+### Logical AND of possibly zero value (renders 0)
+
+```jsx
+"use client"
+
+import { useState } from "react"
+
+export default function ProductsInStock() {
+  const [productsInStock, setProductsInStock] = useState([])
+
+  return <div>{productsInStock.length && "Products in stock"}</div>
+}
+```
+
+## Fixes
+
+### Conditional (force boolean with double negation)
+
+```jsx
+<div>{!!productsInStock.length && "Products in stock"}</div>
+```
+
+### Conditional (specify length)
+
+```jsx
+<div>{productsInStock.length > 0 && "Products in stock"}</div>
+```
+
+### Ternary operator (use null)
+
+```jsx
+<div>{productsInStock.length ? "Products in stock" : null}</div>
+```
