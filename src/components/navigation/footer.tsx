@@ -1,10 +1,10 @@
-import { contacts, now } from "@/lib/constants"
 import { NowPlaying } from "@/components/about/now-playing"
 import { Clock } from "@/components/global/clock"
+import { contacts, now } from "@/lib/constants"
 
 export const Footer = () => {
   return (
-    <footer className="relative bottom-0 mx-auto flex w-full flex-col gap-y-5 px-2.5 py-5 text-xs font-medium uppercase md:px-10">
+    <footer className="relative bottom-0 mx-auto flex w-full flex-col gap-y-5 px-2.5 py-5 text-xs font-medium uppercase md:px-5">
       <div className="flex justify-between">
         <div className="flex gap-x-1">
           <Clock time={now.getTime()} />

@@ -1,13 +1,23 @@
 "use client"
 
-import { useState } from "react"
+import { useSearchParams } from "next/navigation"
+import { useEffect } from "react"
 
 import { ProjectGrid } from "@/components/home/project-grid"
 import { ProjectList } from "@/components/home/project-list"
 import { ViewToggle } from "@/components/home/view-toggle"
+import { FilterPill } from "@/components/work/filter-pill"
+import { projectCategoryVariants } from "@/lib/data"
+import { useViewStore } from "@/lib/store"
 
 export const WorkSection = ({ sortedProjects }: { sortedProjects: any }) => {
-  const [toggleViewMode, setToggleViewMode] = useState(true)
+  const viewStore = useViewStore()
+  const searchParams = useSearchParams()
+  const selectedProjectCategory = searchParams.get("project_type")
+
+  useEffect(() => {
+    useViewStore.persist.rehydrate()
+  }, [])
 
   return (
     <div>
@@ -16,12 +26,22 @@ export const WorkSection = ({ sortedProjects }: { sortedProjects: any }) => {
           Work
         </h1>
         <ViewToggle
-          toggleViewMode={toggleViewMode}
-          setToggleViewMode={setToggleViewMode}
+          isToggled={viewStore.isToggled}
+          setToggle={viewStore.setToggle}
         />
       </div>
+      <div className="flex items-center gap-x-10 border-b p-5">
+        <p>Filters by</p>
+        <div className="flex gap-x-5">
+          {projectCategoryVariants.map((category, idx) => (
+            <FilterPill key={idx} href={`?project_category=${category}`}>
+              {category}
+            </FilterPill>
+          ))}
+        </div>
+      </div>
 
-      {toggleViewMode ? (
+      {viewStore.isToggled ? (
         <ProjectGrid sortedProjects={sortedProjects} />
       ) : (
         <ProjectList sortedProjects={sortedProjects} />

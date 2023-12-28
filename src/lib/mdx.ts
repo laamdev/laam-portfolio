@@ -1,8 +1,7 @@
 import fs from "fs"
-import { compileMDX } from "next-mdx-remote/rsc"
 import path from "path"
 
-import { ProjectFrontmatter, SnippetFrontmatter } from "../../types/content"
+import { ProjectFrontmatter, SnippetFrontmatter } from "@/types/mdx"
 
 const projectsRootDirectory = path.join(
   process.cwd(),
@@ -17,190 +16,108 @@ const snippetsRootDirectory = path.join(
   "snippets"
 )
 
-export const getProjectBySlug = async (slug: string) => {
-  const realSlug = slug.replace(/\.mdx$/, "")
-  const filePath = path.join(projectsRootDirectory, `${realSlug}.mdx`)
-
-  const fileContent = fs.readFileSync(filePath, { encoding: "utf8" })
-
-  const {
-    frontmatter,
-    content,
-  }: { frontmatter: ProjectFrontmatter; content: any } = await compileMDX({
-    source: fileContent,
-    options: { parseFrontmatter: true },
-  })
-
-  return { meta: { ...frontmatter, slug: realSlug }, content }
-}
-
-export const getAllProjectsMeta = async () => {
-  const files = fs.readdirSync(projectsRootDirectory)
-
-  let projects: ProjectFrontmatter[] = []
-
-  for (const file of files) {
-    const { meta } = await getProjectBySlug(file)
-    projects.push(meta)
-  }
-
-  return projects
-}
-
-export const getSnippetBySlug = async (slug: string) => {
-  const realSlug = slug.replace(/\.mdx$/, "")
-  const filePath = path.join(snippetsRootDirectory, `${realSlug}.mdx`)
-
-  const fileContent = fs.readFileSync(filePath, { encoding: "utf8" })
-
-  const {
-    frontmatter,
-    content,
-  }: { frontmatter: SnippetFrontmatter; content: any } = await compileMDX({
-    source: fileContent,
-    options: { parseFrontmatter: true },
-  })
-
-  return { meta: { ...frontmatter, slug: realSlug }, content }
-}
-
-export const getAllSnippetsMeta = async () => {
-  const files = fs.readdirSync(snippetsRootDirectory)
-
-  let snippets: SnippetFrontmatter[] = []
-
-  for (const file of files) {
-    const { meta } = await getSnippetBySlug(file)
-    snippets.push(meta)
-  }
-
-  return snippets
-}
-
-// // import chalk from 'chalk';
-// // import fs from 'fs';
-// // import md5 from 'md5';
-// // import path from 'path';
-// // // import config from '~site/config';
-
-// // export interface Project {
-// //   metadata: Metadata;
-// //   slug: string;
-// //   content: string;
+// // type Metadata = {
+// //   title: string
+// //   publishedAt: string
+// //   summary: string
+// //   image?: string
 // // }
 
-// // export interface Metadata {
-// //   title: string;
-// //   date: string;
-// //   summary?: string;
-// //   image?: string;
-// //   password?: string;
-// //   draft?: boolean | string;
+function parseSnippetsFrontmatter(fileContent: string) {
+  let frontmatterRegex = /---\s*([\s\S]*?)\s*---/
+  let match = frontmatterRegex.exec(fileContent)
+  let frontMatterBlock = match![1]
+  let content = fileContent.replace(frontmatterRegex, "").trim()
+  let frontMatterLines = frontMatterBlock.trim().split("\n")
+  let metadata: Partial<SnippetFrontmatter> = {}
+
+  frontMatterLines.forEach((line) => {
+    let [key, ...valueArr] = line.split(": ")
+    let value = valueArr.join(": ").trim()
+    value = value.replace(/^['"](.*)['"]$/, "$1")
+    // @ts-expect-error
+    metadata[key.trim() as keyof SnippetFrontmatter] = value
+  })
+
+  return { metadata: metadata as SnippetFrontmatter, content }
+}
+
+function parseProjectsFrontmatter(fileContent: string) {
+  let frontmatterRegex = /---\s*([\s\S]*?)\s*---/
+  let match = frontmatterRegex.exec(fileContent)
+  let frontMatterBlock = match![1]
+  let content = fileContent.replace(frontmatterRegex, "").trim()
+  let frontMatterLines = frontMatterBlock.trim().split("\n")
+  let metadata: Partial<ProjectFrontmatter> = {}
+
+  frontMatterLines.forEach((line) => {
+    let [key, ...valueArr] = line.split(": ")
+    let value = valueArr.join(": ").trim()
+    value = value.replace(/^['"](.*)['"]$/, "$1")
+    // @ts-expect-error
+    metadata[key.trim() as keyof ProjectFrontmatter] = value
+  })
+
+  return { metadata: metadata as ProjectFrontmatter, content }
+}
+
+function getMDXFiles(dir) {
+  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx")
+}
+
+function readSnippetsMDXFile(filePath) {
+  let rawContent = fs.readFileSync(filePath, "utf-8")
+  return parseSnippetsFrontmatter(rawContent)
+}
+
+function readProjectsMDXFile(filePath) {
+  let rawContent = fs.readFileSync(filePath, "utf-8")
+  return parseProjectsFrontmatter(rawContent)
+}
+
+// // function extractTweetIds(content) {
+// //   let tweetMatches = content.match(/<StaticTweet\sid="[0-9]+"\s\/>/g)
+// //   return tweetMatches?.map((tweet) => tweet.match(/[0-9]+/g)[0]) || []
 // // }
 
-// // const getDefaultDate = (filePath: string): string => {
-// //   const stats = fs.statSync(filePath);
-// //   return new Date(stats.birthtime).toLocaleString();
-// // };
+function getSnippetsMDXData(dir) {
+  let mdxFiles = getMDXFiles(dir)
+  return mdxFiles.map((file) => {
+    let { metadata, content } = readSnippetsMDXFile(path.join(dir, file))
+    let slug = path.basename(file, path.extname(file))
+    // // let tweetIds = extractTweetIds(content)
+    return {
+      metadata,
+      slug,
+      // // tweetIds,
+      content,
+    }
+  })
+}
 
-// // const parseDate = (dateString: string): string | number => {
-// //   const parsedDate = Date.parse(dateString);
-// //   return isNaN(parsedDate) ? dateString : parsedDate;
-// // };
-// // const parseFrontmatter = (
-// //   fileContent: string,
-// //   fileName: string,
-// //   filePath: string,
-// // ) => {
-// //   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
-// //   const match = frontmatterRegex.exec(fileContent);
-// //   const defaultDate = getDefaultDate(filePath);
-// //   const defaultTitle = fileName.replace(/\.mdx?$/, ''); // Use file name as the default title
+function getProjectsMDXData(dir) {
+  let mdxFiles = getMDXFiles(dir)
+  return mdxFiles.map((file) => {
+    let { metadata, content } = readProjectsMDXFile(path.join(dir, file))
+    let slug = path.basename(file, path.extname(file))
+    // // let tweetIds = extractTweetIds(content)
+    return {
+      metadata,
+      slug,
+      // // tweetIds,
+      content,
+    }
+  })
+}
 
-// //   if (match) {
-// //     const frontMatterBlock = match[1];
-// //     const content = fileContent.replace(frontmatterRegex, '').trim();
-// //     const frontMatterLines = frontMatterBlock.trim().split('\n');
-// //     const metadata: Partial<Metadata> = {};
+export function getSnippets() {
+  return getSnippetsMDXData(path.join(snippetsRootDirectory))
+}
 
-// //     frontMatterLines.forEach((line) => {
-// //       const [key, ...valueArr] = line.split(': ');
-// //       let value: any = valueArr.join(': ').trim();
-// //       value = value.replace(/^['"](.*)['"]$/, '$1'); // Remove quotes
-// //       if (value === 'true') {
-// //         value = true;
-// //       } else if (value === 'false') {
-// //         value = false;
-// //       }
-// //       if (key.trim() === 'date') {
-// //         value = parseDate(value);
-// //       }
-// //       metadata[key.trim() as keyof Metadata] = value;
-// //       if (!metadata.date) {
-// //         metadata.date = defaultDate;
-// //       }
-// //     });
+export function getProjects() {
+  return getProjectsMDXData(path.join(projectsRootDirectory))
+}
 
-// //     return { metadata: metadata as Metadata, content };
-// //   } else {
-// //     // No frontmatter found, use default values
-// //     const defaultFrontmatter = `---\ntitle: ${defaultTitle}\ndate: ${defaultDate}\n---`;
-// //     const updatedContent = `${defaultFrontmatter}\n\n${fileContent.trim()}`;
-// //     // Write the updated content back to the file
-// //     fs.writeFileSync(filePath, updatedContent);
-// //     console.log(
-// //       chalk.red(`检测到 ${filePath} 没有frontmatter`, '已经自动更新'),
-// //     );
-// //     return {
-// //       metadata: {
-// //         title: defaultTitle,
-// //         date: defaultDate,
-// //       },
-// //       content: fileContent.trim(),
-// //     };
-// //   }
-// // };
-
-// // const getMDXFilesRecursive = (dir: string): string[] => {
-// //   let mdxFiles: string[] = [];
-// //   const files = fs.readdirSync(dir);
-
-// //   files.forEach((file) => {
-// //     const filePath = path.join(dir, file);
-// //     const isDirectory = fs.statSync(filePath).isDirectory();
-
-// //     if (isDirectory) {
-// //       // Recursively get MDX files from subdirectories
-// //       mdxFiles = mdxFiles.concat(getMDXFilesRecursive(filePath));
-// //     } else if (path.extname(file) === '.mdx') {
-// //       mdxFiles.push(filePath);
-// //     }
-// //   });
-
-// //   return mdxFiles;
-// // };
-
-// // const readMDXFile = (filePath: string) => {
-// //   const rawContent = fs.readFileSync(filePath, 'utf-8');
-// //   return parseFrontmatter(rawContent, path.basename(filePath), filePath);
-// // };
-// // const getMDXData = (dir: string): Project[] => {
-// //   const mdxFiles = getMDXFilesRecursive(dir);
-// //   return mdxFiles.map((filePath) => {
-// //     const { metadata, content } = readMDXFile(filePath);
-// //     const filename = path.basename(filePath, path.extname(filePath));
-// //     const slug = md5(filename);
-// //     return {
-// //       metadata,
-// //       slug,
-// //       content,
-// //     };
-// //   });
-// // };
-
-// // export const getBlogPosts = () => {
-// //   return getMDXData(path.join(process.cwd(), config.content));
-// // };
-
-// // export const getPostFromParams = (slug: string) =>
-// //   getBlogPosts().find((post) => post.slug === slug);
+// // export function getSnippets() {
+// //   return getMDXData(path.join(snippetsRootDirectory))
+// // }

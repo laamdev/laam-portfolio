@@ -3,26 +3,15 @@ import { GridIcon, ListIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export const ViewToggle = ({
-  toggleViewMode,
-  setToggleViewMode,
+  isToggled,
+  setToggle,
 }: {
-  toggleViewMode: boolean
-  setToggleViewMode: (value: boolean) => void
+  isToggled: boolean
+  setToggle: () => void
 }) => {
   return (
-    <div className="flex items-end gap-x-2.5">
-      <button>
-        <GridIcon
-          onClick={() => setToggleViewMode((toggleViewMode = true))}
-          className={cn(!toggleViewMode ? "opacity-30" : "opacity-100")}
-        />
-      </button>
-      <button>
-        <ListIcon
-          onClick={() => setToggleViewMode((toggleViewMode = false))}
-          className={cn(toggleViewMode ? "opacity-30" : "opacity-100")}
-        />
-      </button>
-    </div>
+    <button className="self-end" onClick={() => setToggle()}>
+      {isToggled ? "List View" : "Grid View"}
+    </button>
   )
 }

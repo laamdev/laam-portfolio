@@ -5,7 +5,7 @@ import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { getAllSnippetsMeta } from "@/lib/mdx"
+import { getSnippets } from "@/lib/mdx"
 
 export const metadata: Metadata = {
   title: "Snippets",
@@ -17,7 +17,10 @@ export const metadata: Metadata = {
 }
 
 export default async function SnippetsPage() {
-  const snippets = await getAllSnippetsMeta()
+  // // const snippets = await getAllSnippetsMeta()
+  let allSnippets = getSnippets()
+
+  console.log(JSON.stringify(allSnippets[0], null, 2))
 
   return (
     <main>
@@ -26,10 +29,10 @@ export default async function SnippetsPage() {
       </h1>
 
       <article>
-        {snippets
-          .filter((snippet) => snippet.isFeatured)
+        {allSnippets
+          .filter((snippet) => snippet.metadata.isFeatured)
           .sort((a, b) => {
-            if (new Date(a.pubDate) > new Date(b.pubDate)) {
+            if (new Date(a.metadata.pubDate) > new Date(b.metadata.pubDate)) {
               return -1
             }
             return 1
@@ -39,7 +42,7 @@ export default async function SnippetsPage() {
               <div className="flex flex-col-reverse border-b md:flex-row md:even:flex-row-reverse">
                 <article className="flex-1 border-b p-5 md:border-b-0">
                   <h2 className="font-serif text-3xl font-bold uppercase md:text-5xl">
-                    {snippet.title}
+                    {snippet.metadata.title}
                   </h2>
 
                   {/* <SnippetDetails>
@@ -55,8 +58,8 @@ export default async function SnippetsPage() {
                 </article>
                 <div className="odd:border-right even:border-left bg-foreground p-5 md:w-1/2">
                   <Image
-                    src={snippet.cover}
-                    alt={snippet.title}
+                    src={snippet.metadata.cover}
+                    alt={snippet.metadata.title}
                     width={1080}
                     height={1080}
                   />

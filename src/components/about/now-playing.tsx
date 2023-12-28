@@ -30,11 +30,11 @@ export const NowPlaying = () => {
         <TbBrandSpotify className="h-4 w-4" />
       </a>
       {data?.isPlaying ? (
-        <div className="flex gap-x-1 whitespace-nowrap md:gap-x-2.5">
+        <div className="flex gap-x-1 whitespace-nowrap">
           <a href={data.songUrl} target="_blank" rel="noreferrer">
             {data.title}
           </a>
-          <span> - </span>
+          <span> — </span>
           <span>{data.artist}</span>
         </div>
       ) : (

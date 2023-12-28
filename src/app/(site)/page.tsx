@@ -1,13 +1,14 @@
 import Image from "next/image"
 
 import { WorkSection } from "@/components/home/work-section"
-import { getAllProjectsMeta } from "@/lib/mdx"
+import { getProjects } from "@/lib/mdx"
 
 export default async function HomeRoute() {
-  const projects = await getAllProjectsMeta()
-  const sortedProjects = projects
-    // // .filter((project) => project.isFeatured)
-    .sort((a: any, b: any) => a.priority - b.priority)
+  let allProjects = getProjects()
+
+  const sortedProjects = allProjects
+    .filter((project) => project.metadata.isFeatured)
+    .sort((a: any, b: any) => a.metadata.priority - b.metadata.priority)
 
   return (
     <main>

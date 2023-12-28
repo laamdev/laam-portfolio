@@ -47,7 +47,7 @@ export const techStack = {
     },
     {
       technology: "Zustand",
-      category: "State MGMT",
+      category: "Global State",
       link: "https://zustand-demo.pmnd.rs",
     },
     {
@@ -1156,3 +1156,5 @@ export const countries = [
     code: "AX",
   },
 ]
+
+export const projectCategoryVariants = ["personal", "professional"]

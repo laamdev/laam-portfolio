@@ -20,20 +20,6 @@ const CustomLink = (props: any) => {
   return <a target="_blank" rel="noopener noreferrer" {...props} />
 }
 
-// // const Pre = ({
-// //   children,
-// //   ...props
-// // }: React.DetailedHTMLProps<
-// //   React.HTMLAttributes<HTMLElement>,
-// //   HTMLPreElement
-// // >) => {
-// //   return (
-// //     <Code {...props} className="not-prose">
-// //       {children}
-// //     </Code>
-// //   )
-// // }
-
 const CustomBullet = ({ children }: { children: string }) => {
   return <li className="list-disc">{children}</li>
 }
@@ -48,6 +34,13 @@ const components = {
   Image: CustomImage,
 }
 
-export const MDXComponents = ({ source }: { source: any }) => {
-  return <MDXRemote components={components} source={source} />
+export const CustomMDX = (props) => {
+  return (
+    <div className="prose-sm prose md:prose-base prose-primary">
+      <MDXRemote
+        {...props}
+        components={{ ...components, ...(props.components || {}) }}
+      />
+    </div>
+  )
 }

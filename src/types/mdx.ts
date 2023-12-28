@@ -5,24 +5,23 @@ export interface Stack {
 
 export interface ProjectFrontmatter {
   priority: number
-  isFeatured: boolean
+  isFeatured?: boolean
   title: string
   agency: string
-  category: string
-  year: boolean
+  category: "personal" | "comercial"
+  year: number
   coverImage: string
   summary: string
   description: string
   siteUrl: string
   codeUrl: string
-  role: string[]
-  stack: Stack[]
+  role: string
+  stack: string
 }
 
 export interface SnippetFrontmatter {
+  isFeatured?: boolean
   title: string
-  isFeatured: boolean
   cover: string
   pubDate: string
-  slug: string
 }
