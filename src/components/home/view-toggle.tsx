@@ -2,6 +2,8 @@ import { GridIcon, ListIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+import { Button } from "../ui/button"
+
 export const ViewToggle = ({
   isToggled,
   setToggle,
@@ -10,8 +12,8 @@ export const ViewToggle = ({
   setToggle: () => void
 }) => {
   return (
-    <button className="self-end" onClick={() => setToggle()}>
+    <Button variant="ghost" className="self-end" onClick={() => setToggle()}>
       {isToggled ? "List View" : "Grid View"}
-    </button>
+    </Button>
   )
 }

@@ -10,6 +10,8 @@ import { FilterPill } from "@/components/work/filter-pill"
 import { projectCategoryVariants } from "@/lib/data"
 import { useViewStore } from "@/lib/store"
 
+import { Heading } from "../global/heading"
+
 export const WorkSection = ({ sortedProjects }: { sortedProjects: any }) => {
   const viewStore = useViewStore()
   const searchParams = useSearchParams()
@@ -22,15 +24,13 @@ export const WorkSection = ({ sortedProjects }: { sortedProjects: any }) => {
   return (
     <div>
       <div className="flex justify-between border-b p-5">
-        <h1 className="font-serif text-6xl font-black uppercase md:text-9xl">
-          Work
-        </h1>
+        <Heading>Work</Heading>
         <ViewToggle
           isToggled={viewStore.isToggled}
           setToggle={viewStore.setToggle}
         />
       </div>
-      <div className="flex items-center gap-x-10 border-b p-5">
+      {/* <div className="flex items-center gap-x-10 border-b p-5">
         <p>Filters by</p>
         <div className="flex gap-x-5">
           {projectCategoryVariants.map((category, idx) => (
@@ -39,7 +39,7 @@ export const WorkSection = ({ sortedProjects }: { sortedProjects: any }) => {
             </FilterPill>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {viewStore.isToggled ? (
         <ProjectGrid sortedProjects={sortedProjects} />

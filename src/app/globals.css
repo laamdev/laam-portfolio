@@ -38,6 +38,11 @@
     /* #97C8DD */
     /* #C4DBE0 */
   }
+
+  ::selection {
+    color: var(--background);
+    background: var(--foreground);
+  }
 }
 
 @layer base {
@@ -48,8 +53,9 @@
   html {
     @apply overflow-x-hidden;
   }
+
   body {
-    @apply bg-background text-foreground overflow-x-hidden;
+    @apply bg-background text-foreground overflow-x-hidden md:text-lg text-base;
   }
 }
 

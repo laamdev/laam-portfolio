@@ -16,13 +16,6 @@ const snippetsRootDirectory = path.join(
   "snippets"
 )
 
-// // type Metadata = {
-// //   title: string
-// //   publishedAt: string
-// //   summary: string
-// //   image?: string
-// // }
-
 function parseSnippetsFrontmatter(fileContent: string) {
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/
   let match = frontmatterRegex.exec(fileContent)

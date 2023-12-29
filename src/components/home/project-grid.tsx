@@ -2,6 +2,9 @@ import Image from "next/image"
 
 import { ProjectFrontmatter } from "@/types/mdx"
 
+import { Label } from "../global/label"
+import { Subheading } from "../global/subheading"
+
 export const ProjectGrid = ({ sortedProjects }: { sortedProjects: any }) => {
   return (
     <div className="grid md:grid-cols-2">
@@ -13,7 +16,7 @@ export const ProjectGrid = ({ sortedProjects }: { sortedProjects: any }) => {
           <a
             key={idx}
             href={`/work/${project.slug}`}
-            className="group relative border-b odd:border-r"
+            className="group relative border-b last:border-b-0 odd:border-r"
           >
             <div className="relative z-10 overflow-hidden">
               <Image
@@ -29,14 +32,14 @@ export const ProjectGrid = ({ sortedProjects }: { sortedProjects: any }) => {
             </div>
 
             <div className="tw-transition group-hover:bg-foreground group-hover:text-background border-t p-5">
-              <p className="flex gap-x-1 text-base font-medium uppercase md:text-lg">
-                <span>{project.metadata.year}</span>
-                <span>·</span>
-                <span>{project.metadata.category}</span>
-              </p>
-              <h2 className="mt-1 font-serif text-3xl font-bold uppercase md:text-5xl">
-                {`${project.metadata.title}`}
-              </h2>
+              <Label>
+                <span className="flex gap-x-1">
+                  <span>{project.metadata.year}</span>
+                  <span>·</span>
+                  <span>{project.metadata.functionality}</span>
+                </span>
+              </Label>
+              <Subheading>{`${project.metadata.title}`}</Subheading>
             </div>
           </a>
         )

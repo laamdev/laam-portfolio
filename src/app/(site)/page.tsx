@@ -1,5 +1,7 @@
 import Image from "next/image"
 
+import { Heading } from "@/components/global/heading"
+import { Subheading } from "@/components/global/subheading"
 import { WorkSection } from "@/components/home/work-section"
 import { getProjects } from "@/lib/mdx"
 
@@ -14,13 +16,14 @@ export default async function HomeRoute() {
     <main>
       <div className="grid border-b md:grid-cols-2">
         <div className="border-r font-serif">
-          <h1 className="border-b p-5 text-7xl font-black uppercase md:text-9xl">
-            {`LAAM`}
-          </h1>
-          <p className="flex flex-col border-b p-5 text-3xl font-bold uppercase md:text-5xl">
-            <span>{`Creative React Developer `}</span>
-            <span>{`specialized in NextJS & Tailwind CSS`}</span>
-          </p>
+          <Heading isPageTitle className="border-b p-5">{`LAAM`}</Heading>
+
+          <div className="border-b p-5 ">
+            <Subheading>
+              {`Freelance Creative Developer specialized in NextJS & Tailwind
+            CSS`}
+            </Subheading>
+          </div>
         </div>
         <div className="relative flex items-center justify-center overflow-hidden">
           <Image
@@ -33,9 +36,7 @@ export default async function HomeRoute() {
         </div>
       </div>
 
-      <div>
-        <WorkSection sortedProjects={sortedProjects} />
-      </div>
+      <WorkSection sortedProjects={sortedProjects} />
     </main>
   )
 }

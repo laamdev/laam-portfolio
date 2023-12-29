@@ -13,46 +13,69 @@ import Image from "next/image"
 
 import { TechStackCore } from "@/components/about/tech-stack-core"
 import { TechStackOther } from "@/components/about/tech-stack-other"
+import { Heading } from "@/components/global/heading"
+import { Label } from "@/components/global/label"
 
 // // import { components } from "@/components/react-tweet/tweet-components"
 
 export default async function AboutPage() {
   return (
     <main>
-      <h1 className="border-b p-5 font-serif text-7xl font-black uppercase md:text-9xl">
-        {`About`}
-      </h1>
-      <div className="grid border-b md:grid-cols-2">
-        <div className="col-span-1 md:border-r">
-          <p className="p-5 text-base md:text-xl">
-            {`I'm Luis Alejandro Anaya Marín, a freelance full stack developer currently based in Madrid, Spain. I specialize in NextJS and Tailwind CSS and have production experience with the latest React features such as Server Components and Server Actions.`}
+      <Heading isPageTitle className="border-b p-5">{`About`}</Heading>
+      <div className="grid border-b md:grid-cols-5">
+        <div className="col-span-3 md:border-r">
+          <p className="flex flex-col gap-y-5 p-5">
+            <span>
+              {`I'm Luis Alejandro Anaya Marín, a freelance full stack developer currently based in Madrid, Spain.`}
+            </span>
+            <span>
+              {`I specialize in NextJS and Tailwind CSS and have production experience with the latest React features such as Server Components and Server Actions.`}
+            </span>
           </p>
-          <div className="grid grid-cols-3 border-y">
-            <div className="col-span-3 border-b p-5">
-              <p className="text-xl font-bold uppercase">{`Availability`}</p>
+          <div className="grid border-t md:grid-cols-3 md:border-y">
+            <div className="border-b p-5 md:col-span-3">
+              <Label>{`Approach`}</Label>
               <ul className="mt-1.5">
-                <li className="flex items-center gap-x-1">
+                <li className="flex items-center gap-x-2.5">
                   <CheckIcon className="h-4 w-4" />
                   <p>{`Short or medium term freelance projects`}</p>
                 </li>
-                <li className="flex items-center gap-x-1">
+                <li className="flex items-center gap-x-2.5">
                   <CheckIcon className="h-4 w-4" />
                   <p>{`In-house hybrid positions (open to relocation)`}</p>
                 </li>
-                <li className="flex items-center gap-x-1">
+                <li className="flex items-center gap-x-2.5">
                   <CheckIcon className="h-4 w-4" />
                   <p>{`Per-hour consultation`}</p>
                 </li>
               </ul>
             </div>
 
-            <div className="border-r p-5">
-              <p className="text-xl font-bold uppercase">{`Contact`}</p>
+            <div className="border-b p-5 md:col-span-3">
+              <Label>{`Availability`}</Label>
+              <ul className="mt-1.5">
+                <li className="flex items-center gap-x-2.5">
+                  <CheckIcon className="h-4 w-4" />
+                  <p>{`Short or medium term freelance projects`}</p>
+                </li>
+                <li className="flex items-center gap-x-2.5">
+                  <CheckIcon className="h-4 w-4" />
+                  <p>{`In-house hybrid positions (open to relocation)`}</p>
+                </li>
+                <li className="flex items-center gap-x-2.5">
+                  <CheckIcon className="h-4 w-4" />
+                  <p>{`Per-hour consultation`}</p>
+                </li>
+              </ul>
+            </div>
+
+            <div className="border-b p-5 md:col-span-1 md:border-b-0 md:border-r">
+              <Label>{`Contact`}</Label>
               <ul className="mt-1.5 flex flex-col gap-y-1">
                 <li>
                   <a
                     href="mailto:luis@laam.dev"
-                    className="flex items-center gap-x-1"
+                    className="flex items-center gap-x-2.5"
                   >
                     <MailIcon className="h-4 w-4" />
                     <p>{`Email`}</p>
@@ -61,7 +84,7 @@ export default async function AboutPage() {
                 <li>
                   <a
                     href="tel:+34689584226"
-                    className="flex items-center gap-x-1"
+                    className="flex items-center gap-x-2.5"
                   >
                     <PhoneIcon className="h-4 w-4" />
                     <p>{`WhatsApp`}</p>
@@ -70,15 +93,15 @@ export default async function AboutPage() {
               </ul>
             </div>
 
-            <div className="border-r p-5">
-              <p className="text-xl font-bold uppercase">{`Socials`}</p>
+            <div className="border-b p-5 md:col-span-1 md:border-b-0 md:border-r">
+              <Label>{`Socials`}</Label>
               <ul className="mt-1.5 flex flex-col gap-y-1">
                 <li>
                   <a
                     href="https://github.com/laanayam333"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-x-1"
+                    className="flex items-center gap-x-2.5"
                   >
                     <GithubIcon className="h-4 w-4" />
                     <p>{`Github`}</p>
@@ -89,7 +112,7 @@ export default async function AboutPage() {
                     href="https://www.instagram.com/laamdev"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-x-1"
+                    className="flex items-center gap-x-2.5"
                   >
                     <InstagramIcon className="h-4 w-4" />
                     <p>{`Instagram`}</p>
@@ -98,8 +121,8 @@ export default async function AboutPage() {
               </ul>
             </div>
 
-            <div className="p-5">
-              <p className="text-xl font-bold uppercase">{`Resume`}</p>
+            <div className="p-5 md:col-span-1">
+              <Label>{`Resume`}</Label>
               <ul className="mt-1.5 flex flex-col gap-y-1">
                 <li>
                   <a
@@ -107,7 +130,7 @@ export default async function AboutPage() {
                     download
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-x-1"
+                    className="flex items-center gap-x-2.5"
                   >
                     <PaperClipIcon className="h-4 w-4" />
                     <p>{`Download CV`}</p>
@@ -118,7 +141,7 @@ export default async function AboutPage() {
                     href="https://www.linkedin.com/in/laanayam/"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-x-1"
+                    className="flex items-center gap-x-2.5"
                   >
                     <LinkedinIcon className="h-4 w-4" />
                     <p>{`Linkedin`}</p>
@@ -129,8 +152,8 @@ export default async function AboutPage() {
           </div>
         </div>
 
-        <div className="relative aspect-square border-t md:border-t-0">
-          <div className="absolute inset-0 z-10 bg-foreground mix-blend-overlay"></div>
+        <div className="relative col-span-2 aspect-square border-t md:border-t-0">
+          <div className="bg-foreground absolute inset-0 z-10 mix-blend-overlay"></div>
           <Image
             src="/images/about/profile.webp"
             alt="Luis Alejandro Anaya Marín"
@@ -140,7 +163,7 @@ export default async function AboutPage() {
         </div>
       </div>
 
-      <div className="grid border-b md:grid-cols-3">
+      <div className="grid md:grid-cols-3">
         <div className="border-b p-5 text-lg md:col-span-1 md:grid md:place-content-center md:border-b-0 md:border-r">
           <h2 className="font-serif text-6xl font-black uppercase md:text-9xl">
             {`Tech Stack`}

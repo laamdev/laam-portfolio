@@ -1,71 +1,76 @@
 export const techStack = {
-  core: [
-    {
-      technology: "Next.js",
-      category: "Front & Back",
-      link: "https://nextjs.org",
-    },
-    {
-      technology: "Typescript",
-      category: "Language",
-      link: "https://www.typescriptlang.org/",
-    },
-    {
-      technology: "Tailwind",
-      category: "Styling",
-      link: "https://tailwindcss.com",
-    },
-    {
-      technology: "shadcn/ui",
-      category: "UI",
-      link: "https://ui.shadcn.com",
-    },
-    {
-      technology: "PlanetScale",
-      category: "Database",
-      link: "https://planetscale.com",
-    },
-    {
-      technology: "Prisma",
-      category: "ORM",
-      link: "https://prisma.io",
-    },
-    {
-      technology: "Sanity",
-      category: "CMS",
-      link: "https://www.sanity.io",
-    },
-    {
-      technology: "Framer Motion",
-      category: "Animation",
-      link: "https://www.framer.com/motion/introduction",
-    },
-    {
-      technology: "Vercel",
-      category: "Deployment",
-      link: "https://vercel.com",
-    },
-    {
-      technology: "Zustand",
-      category: "Global State",
-      link: "https://zustand-demo.pmnd.rs",
-    },
-    {
-      technology: "SWR",
-      category: "Client Data Fetch",
-      link: "https://swr.vercel.app",
-    },
-    {
-      technology: "React Hook Form",
-      category: "Forms",
-      link: "https://react-hook-form.com",
-    },
-    {
-      technology: "Zod",
-      category: "Validation",
-      link: "https://zod.dev",
-    },
-  ],
+  core: {
+    frontend: [
+      {
+        technology: "Next.js",
+        category: "Framework",
+        link: "https://nextjs.org",
+      },
+      {
+        technology: "Typescript",
+        category: "Language",
+        link: "https://www.typescriptlang.org/",
+      },
+      {
+        technology: "Tailwind CSS",
+        category: "Styling",
+        link: "https://tailwindcss.com",
+      },
+      {
+        technology: "shadcn/ui",
+        category: "UI",
+        link: "https://ui.shadcn.com",
+      },
+
+      {
+        technology: "Framer Motion",
+        category: "Animation",
+        link: "https://www.framer.com/motion/introduction",
+      },
+      {
+        technology: "SWR",
+        category: "Client Data Fetch",
+        link: "https://swr.vercel.app",
+      },
+      {
+        technology: "React Hook Form",
+        category: "Forms",
+        link: "https://react-hook-form.com",
+      },
+      {
+        technology: "Zod",
+        category: "Validation",
+        link: "https://zod.dev",
+      },
+    ],
+    backend: [
+      {
+        technology: "Sanity",
+        category: "CMS",
+        link: "https://www.sanity.io",
+      },
+      {
+        technology: "Vercel",
+        category: "Deployment",
+        link: "https://vercel.com",
+      },
+      {
+        technology: "PlanetScale",
+        category: "Database",
+        link: "https://planetscale.com",
+      },
+      {
+        technology: "Prisma",
+        category: "ORM",
+        link: "https://prisma.io",
+      },
+      {
+        technology: "Zustand",
+        category: "Global State",
+        link: "https://zustand-demo.pmnd.rs",
+      },
+    ],
+  },
   other: [
     {
       technology: "CSS Modules",

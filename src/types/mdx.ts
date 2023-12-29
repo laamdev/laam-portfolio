@@ -7,16 +7,18 @@ export interface ProjectFrontmatter {
   priority: number
   isFeatured?: boolean
   title: string
-  agency: string
-  category: "personal" | "comercial"
+  category: string
+  functionality: string
   year: number
   coverImage: string
-  summary: string
+  agency?: string
+  client?: string
   description: string
-  siteUrl: string
-  codeUrl: string
+  siteUrl?: string
+  codeUrl?: string
   role: string
   stack: string
+  summary: string
 }
 
 export interface SnippetFrontmatter {

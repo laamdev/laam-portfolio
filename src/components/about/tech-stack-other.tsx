@@ -1,19 +1,14 @@
-import { techStack } from "@/lib/data"
+import { Subheading } from "@/components/global/subheading"
 import { Badge } from "@/components/ui/badge"
+import { techStack } from "@/lib/data"
 
 export const TechStackOther = () => {
   return (
     <div className="flex flex-col">
-      <div className="border-y p-5 font-serif text-3xl font-black uppercase">
-        Other
-      </div>
-      <div className="flex flex-wrap gap-5 p-5 text-lg">
+      <Subheading className="border-y p-5">{`Other`}</Subheading>
+      <div className="flex flex-wrap gap-2.5 p-5 text-lg md:gap-5">
         {techStack.other.map((tech) => (
-          <Badge variant="outline">
-            <a href={tech.link} target="_blank" rel="noreferrer">
-              {tech.technology}
-            </a>
-          </Badge>
+          <Badge>{tech.technology}</Badge>
         ))}
       </div>
     </div>
