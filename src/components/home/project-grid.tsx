@@ -5,10 +5,10 @@ import { ProjectFrontmatter } from "@/types/mdx"
 import { Label } from "../global/label"
 import { Subheading } from "../global/subheading"
 
-export const ProjectGrid = ({ sortedProjects }: { sortedProjects: any }) => {
+export const ProjectGrid = ({ projects }: { projects: any }) => {
   return (
     <div className="grid md:grid-cols-2">
-      {sortedProjects.map(
+      {projects.map(
         (
           project: { slug: string; metadata: ProjectFrontmatter },
           idx: number

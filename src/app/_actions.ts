@@ -3,11 +3,11 @@
 import { redirect } from "next/navigation"
 
 export const updateFilters = async (formData: FormData) => {
-  const projectTypeFilters = formData.getAll("project_type[]")
+  const projectCategoryFilters = formData.getAll("project_category[]")
 
-  if (projectTypeFilters.length > 0) {
+  if (projectCategoryFilters.length > 0) {
     const params = new URLSearchParams([
-      ["project_type", projectTypeFilters.join(",")],
+      ["project_category", projectCategoryFilters.join(",")],
     ])
 
     redirect(`/?${params}`)

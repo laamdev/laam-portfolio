@@ -5,12 +5,21 @@ import { Subheading } from "@/components/global/subheading"
 import { WorkSection } from "@/components/home/work-section"
 import { getProjects } from "@/lib/mdx"
 
-export default async function HomeRoute() {
+interface ProjectCategoryParams {
+  [key: string]: string
+}
+
+export default async function HomeRoute({
+  searchParams,
+}: {
+  searchParams: { searchParams: ProjectCategoryParams }
+}) {
   let allProjects = getProjects()
 
-  const sortedProjects = allProjects
-    .filter((project) => project.metadata.isFeatured)
-    .sort((a: any, b: any) => a.metadata.priority - b.metadata.priority)
+  // // const sortedProjects = allProjects
+  // //   .filter((project) => project.metadata.isFeatured)
+  // //   .sort((a: any, b: any) => a.metadata.priority - b.metadata.priority)
+  // // const { project_category: projectCategory } = searchParams
 
   return (
     <main>
@@ -36,7 +45,7 @@ export default async function HomeRoute() {
         </div>
       </div>
 
-      <WorkSection sortedProjects={sortedProjects} />
+      <WorkSection projects={allProjects} />
     </main>
   )
 }

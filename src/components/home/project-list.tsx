@@ -1,12 +1,11 @@
+import { Label } from "@/components/global/label"
+import { Subheading } from "@/components/global/subheading"
 import { ProjectFrontmatter } from "@/types/mdx"
 
-import { Label } from "../global/label"
-import { Subheading } from "../global/subheading"
-
-export const ProjectList = ({ sortedProjects }: { sortedProjects: any }) => {
+export const ProjectList = ({ projects }: { projects: any }) => {
   return (
     <div className="flex flex-col">
-      {sortedProjects.map(
+      {projects.map(
         (project: { slug: string; metadata: ProjectFrontmatter }, idx: any) => (
           <a href={`/work/${project.slug}`} key={idx}>
             <div className="tw-transition hover:bg-foreground hover:text-background group flex flex-col justify-between gap-x-5 gap-y-2.5 border-b p-5 md:flex-row md:items-center">
