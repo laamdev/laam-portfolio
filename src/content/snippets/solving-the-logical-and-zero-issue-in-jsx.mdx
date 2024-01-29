@@ -41,22 +41,4 @@ export default function ProductsInStock() {
 <div>{productsInStock.length ? "Products in stock" : null}</div>
 ```
 
-## Fixes
-
-### Conditional (force boolean with double negation)
-
-```jsx
-<div>{!!productsInStock.length && "Products in stock"}</div>
-```
-
-### Conditional (specify length)
-
-```jsx
-<div>{productsInStock.length > 0 && "Products in stock"}</div>
-```
-
-### Ternary operator (use null)
-
-```jsx
-<div>{productsInStock.length ? "Products in stock" : null}</div>
-```
+ 

@@ -1,11 +1,11 @@
 import Image from "next/image"
 
+import { Label } from "@/components/global/label"
+import { Subheading } from "@/components/global/subheading"
 import { ProjectFrontmatter } from "@/types/mdx"
 
-import { Label } from "../global/label"
-import { Subheading } from "../global/subheading"
-
 export const ProjectGrid = ({ projects }: { projects: any }) => {
+
   return (
     <div className="grid md:grid-cols-2">
       {projects.map(
@@ -24,9 +24,7 @@ export const ProjectGrid = ({ projects }: { projects: any }) => {
                 height={900}
                 alt={project.metadata.title}
                 src={project.metadata.coverImage}
-                objectFit="cover"
-                objectPosition="center"
-                className="tw-transition border-primary h-full w-full scale-75 rounded-2xl border-4 object-cover object-center group-hover:scale-[0.8] md:grayscale md:group-hover:grayscale-0"
+                className="tw-transition border-primary size-full scale-75 rounded-2xl border-4 object-cover object-center group-hover:scale-[0.8] md:grayscale md:group-hover:grayscale-0"
               />
               {/* <div className="tw-transition bg-foreground inset-0 z-20 hidden scale-75 rounded opacity-75 mix-blend-multiply group-hover:opacity-0 md:absolute md:block"></div> */}
             </div>

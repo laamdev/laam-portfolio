@@ -26,48 +26,48 @@ export default async function AboutPage() {
         <div className="col-span-3 md:border-r">
           <p className="flex flex-col gap-y-5 p-5">
             <span>
-              {`I'm Luis Alejandro Anaya Marín, a freelance full stack developer currently based in Madrid, Spain.`}
+              {`I'm Luis Alejandro Anaya Marín, a creative React developer currently based in Madrid, Spain. I specialize in NextJS and Tailwind CSS and have production experience with the latest React features such as Server Components and Server Actions.`}
             </span>
             <span>
-              {`I specialize in NextJS and Tailwind CSS and have production experience with the latest React features such as Server Components and Server Actions.`}
+              {`I have 3+ years of experience working both as a freelance and in-house developer. I've developed and launched a wide range of projects including marketing sites, e-commerce shops, legacy code migrations, digital portfolios, web apps, and SaaS dashboards.`}
             </span>
           </p>
           <div className="grid border-t md:grid-cols-3 md:border-y">
             <div className="border-b p-5 md:col-span-3">
-              <Label>{`Approach`}</Label>
+              <Label>{`Availability For`}</Label>
               <ul className="mt-1.5">
                 <li className="flex items-center gap-x-2.5">
-                  <CheckIcon className="h-4 w-4" />
+                  <CheckIcon className="size-4" />
                   <p>{`Short or medium term freelance projects`}</p>
                 </li>
                 <li className="flex items-center gap-x-2.5">
-                  <CheckIcon className="h-4 w-4" />
+                  <CheckIcon className="size-4" />
                   <p>{`In-house hybrid positions (open to relocation)`}</p>
                 </li>
                 <li className="flex items-center gap-x-2.5">
-                  <CheckIcon className="h-4 w-4" />
+                  <CheckIcon className="size-4" />
                   <p>{`Per-hour consultation`}</p>
                 </li>
               </ul>
             </div>
 
-            <div className="border-b p-5 md:col-span-3">
+            {/* <div className="border-b p-5 md:col-span-3">
               <Label>{`Availability`}</Label>
               <ul className="mt-1.5">
                 <li className="flex items-center gap-x-2.5">
-                  <CheckIcon className="h-4 w-4" />
+                  <CheckIcon className="size-4" />
                   <p>{`Short or medium term freelance projects`}</p>
                 </li>
                 <li className="flex items-center gap-x-2.5">
-                  <CheckIcon className="h-4 w-4" />
+                  <CheckIcon className="size-4" />
                   <p>{`In-house hybrid positions (open to relocation)`}</p>
                 </li>
                 <li className="flex items-center gap-x-2.5">
-                  <CheckIcon className="h-4 w-4" />
+                  <CheckIcon className="size-4" />
                   <p>{`Per-hour consultation`}</p>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             <div className="border-b p-5 md:col-span-1 md:border-b-0 md:border-r">
               <Label>{`Contact`}</Label>
@@ -77,7 +77,7 @@ export default async function AboutPage() {
                     href="mailto:luis@laam.dev"
                     className="flex items-center gap-x-2.5"
                   >
-                    <MailIcon className="h-4 w-4" />
+                    <MailIcon className="size-4" />
                     <p>{`Email`}</p>
                   </a>
                 </li>
@@ -86,7 +86,7 @@ export default async function AboutPage() {
                     href="tel:+34689584226"
                     className="flex items-center gap-x-2.5"
                   >
-                    <PhoneIcon className="h-4 w-4" />
+                    <PhoneIcon className="size-4" />
                     <p>{`WhatsApp`}</p>
                   </a>
                 </li>
@@ -103,7 +103,7 @@ export default async function AboutPage() {
                     rel="noreferrer"
                     className="flex items-center gap-x-2.5"
                   >
-                    <GithubIcon className="h-4 w-4" />
+                    <GithubIcon className="size-4" />
                     <p>{`Github`}</p>
                   </a>
                 </li>
@@ -114,7 +114,7 @@ export default async function AboutPage() {
                     rel="noreferrer"
                     className="flex items-center gap-x-2.5"
                   >
-                    <InstagramIcon className="h-4 w-4" />
+                    <InstagramIcon className="size-4" />
                     <p>{`Instagram`}</p>
                   </a>
                 </li>
@@ -132,7 +132,7 @@ export default async function AboutPage() {
                     rel="noreferrer"
                     className="flex items-center gap-x-2.5"
                   >
-                    <PaperClipIcon className="h-4 w-4" />
+                    <PaperClipIcon className="size-4" />
                     <p>{`Download CV`}</p>
                   </a>
                 </li>
@@ -143,7 +143,7 @@ export default async function AboutPage() {
                     rel="noreferrer"
                     className="flex items-center gap-x-2.5"
                   >
-                    <LinkedinIcon className="h-4 w-4" />
+                    <LinkedinIcon className="size-4" />
                     <p>{`Linkedin`}</p>
                   </a>
                 </li>
@@ -158,7 +158,7 @@ export default async function AboutPage() {
             src="/images/about/profile.webp"
             alt="Luis Alejandro Anaya Marín"
             fill
-            className="h-full w-full object-cover grayscale"
+            className="size-full object-cover grayscale"
           />
         </div>
       </div>

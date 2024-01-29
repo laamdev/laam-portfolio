@@ -29,7 +29,7 @@ export default async function HomeRoute({
 
           <div className="border-b p-5 ">
             <Subheading>
-              {`Freelance Creative Developer specialized in NextJS & Tailwind
+              {`Creative React Developer specialized in NextJS & Tailwind
             CSS`}
             </Subheading>
           </div>

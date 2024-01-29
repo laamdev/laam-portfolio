@@ -99,8 +99,6 @@ export default async function ProjectPage({
               height={900}
               alt={project.metadata.title}
               src={project.metadata.coverImage}
-              objectFit="cover"
-              objectPosition="center"
               className="border-primary scale-75 rounded-2xl border-4 object-cover object-center"
             />
           </AspectRatio>

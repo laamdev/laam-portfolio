@@ -60,9 +60,9 @@ export const techStack = {
         link: "https://planetscale.com",
       },
       {
-        technology: "Prisma",
+        technology: "Drizzle",
         category: "ORM",
-        link: "https://prisma.io",
+        link: "https://orm.drizzle.team",
       },
       {
         technology: "Zustand",
@@ -109,8 +109,9 @@ export const techStack = {
       link: "https://react.email",
     },
     {
-      technology: "Drizzle",
-      link: "https://orm.drizzle.team",
+      technology: "Prisma",
+      category: "ORM",
+      link: "https://prisma.io",
     },
     {
       technology: "Neon",
