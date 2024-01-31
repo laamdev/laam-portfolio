@@ -4,10 +4,15 @@ import { notFound } from "next/navigation"
 import { CustomMDX } from "@/components/mdx/mdx-remote"
 import { getSnippets } from "@/lib/mdx"
 
-// // export async function generateMetadata({ params }) {
-// //   const { meta } = await getPageContent(params.slug)
-// //   return { title: meta.title }
-// // }
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  let snippet = getSnippets().find((snippet) => snippet.slug === params.slug)
+
+  return { title: snippet?.metadata.title }
+}
 
 export default async function SnippetPage({ params }: { params: any }) {
   let snippet = getSnippets().find((snippet) => snippet.slug === params.slug)
@@ -26,7 +31,7 @@ export default async function SnippetPage({ params }: { params: any }) {
           alt={snippet.metadata.title}
           width={1080}
           height={1080}
-          className="h-full w-full object-cover object-center"
+          className="size-full object-cover object-center"
         />
       </div>
 

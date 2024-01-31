@@ -10,14 +10,15 @@ import { Badge } from "@/components/ui/badge"
 import { ProjectContentDrawer } from "@/components/work/project-content-drawer"
 import { getProjects } from "@/lib/mdx"
 
-// // export async function generateMetadata({
-// //   params,
-// // }: {
-// //   params: { slug: string }
-// // }) {
-// //   const { meta } = await getPageContent(params.slug)
-// //   return { title: meta.title }
-// // }
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  let project = getProjects().find((project) => project.slug === params.slug)
+
+  return { title: project?.metadata.title }
+}
 
 export default async function ProjectPage({
   params,
