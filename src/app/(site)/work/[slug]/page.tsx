@@ -87,8 +87,9 @@ export default async function ProjectPage({
             )}
 
             {project.content ? (
-              <ProjectContentDrawer content={project.content} />
+              <div></div>
             ) : (
+              // <ProjectContentDrawer content={project.content} />
               <div />
             )}
           </div>

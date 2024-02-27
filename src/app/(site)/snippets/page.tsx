@@ -55,7 +55,7 @@ export default async function SnippetsPage() {
                     </NavButton>
                   </div>
                 </article>
-                <div className="odd:border-right even:border-left bg-foreground p-5 md:w-1/2">
+                <div className="odd:border-right even:border-left tw-noise bg-foreground p-5 md:w-1/2">
                   <Image
                     src={snippet.metadata.cover}
                     alt={snippet.metadata.title}

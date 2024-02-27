@@ -18,7 +18,7 @@ export const ProjectContentDrawer = ({ content }: { content: any }) => {
   return (
     <Drawer>
       <DrawerTrigger className="hover:bg-primary hover:text-background tw-transition flex items-center justify-center gap-x-2.5 p-5 text-center text-sm font-bold uppercase md:text-base">
-        <PlusIcon className="h-4 w-4" />
+        <PlusIcon className="size-4" />
         <span>{`Info`}</span>
       </DrawerTrigger>
       <DrawerContent>
