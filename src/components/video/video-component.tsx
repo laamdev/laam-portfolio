@@ -5,7 +5,6 @@ export const VideoComponent = async ({ filename }: { filename: string }) => {
     prefix: filename,
     limit: 1,
   })
-  console.log(blobs)
   const { url } = blobs[0]
 
   return (

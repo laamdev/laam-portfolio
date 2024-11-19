@@ -4,7 +4,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Metadata } from "next"
 import localFont from "next/font/local"
 import { ReactNode } from "react"
-import { Provider as BalancerProvider } from "react-wrap-balancer"
 
 import { Footer } from "@/components/navigation/footer"
 import { Header } from "@/components/navigation/header"
@@ -226,13 +225,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
     >
       <SpeedInsights />
       <body>
-        <BalancerProvider>
-          <div>
-            <Header />
-            <main className="min-h-screen">{children}</main>
-            <Footer />
-          </div>
-        </BalancerProvider>
+        <div>
+          <Header />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   )

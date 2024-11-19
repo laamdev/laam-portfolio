@@ -68,40 +68,5 @@ export default async function SnippetsPage() {
           })}
       </article>
     </main>
-    // <main className="grid border-b md:grid-cols-2">
-    //   <div>
-    //     <h1 className="sticky top-0 p-5 font-serif text-5xl font-black uppercase md:text-9xl">
-    //       {`Snippets`}
-    //     </h1>
-    //   </div>
-
-    //   <div className="grid divide-y border-t md:border-l md:border-t-0">
-    //     {/* <div className="flex items-center">
-    //       <div className="border-r p-5">
-    //         <SearchIcon className="h-4 w-4" />
-    //       </div>
-    //       <div className="w-full px-5">
-    //         <Input />
-    //       </div>
-    //     </div> */}
-    //     {snippets
-    //       .filter((snippet) => snippet.isFeatured)
-    //       .sort((a, b) => {
-    //         if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
-    //           return -1
-    //         }
-    //         return 1
-    //       })
-    //       .map((snippet) => (
-    //         <Link
-    //           key={snippet.slug}
-    //           href={snippet.slug}
-    //           className="hover:bg-primary hover:text-background flex items-center p-5 md:justify-end"
-    //         >
-    //           <h2 className="text-lg md:text-xl">{snippet.title}</h2>
-    //         </Link>
-    //       ))}
-    //   </div>
-    // </main>
   )
 }

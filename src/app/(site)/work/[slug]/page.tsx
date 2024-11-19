@@ -1,13 +1,11 @@
 import Image from "next/image"
 import { notFound } from "next/navigation"
-import Balancer from "react-wrap-balancer"
 
 import { Label } from "@/components/global/label"
 import { LabelSm } from "@/components/global/label-sm"
 import { Subheading } from "@/components/global/subheading"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Badge } from "@/components/ui/badge"
-import { ProjectContentDrawer } from "@/components/work/project-content-drawer"
 import { getProjects } from "@/lib/mdx"
 
 export async function generateMetadata({
@@ -40,7 +38,7 @@ export default async function ProjectPage({
       </script> */}
       <div className="grid gap-y-5 border-b p-5 md:grid-cols-3">
         <h1 className="col-span-2 font-serif text-4xl font-black uppercase md:self-center md:text-9xl">
-          <Balancer>{project.metadata.title}</Balancer>
+          {project.metadata.title}
         </h1>
 
         <div className="col-span-1 text-base md:self-end md:text-lg">

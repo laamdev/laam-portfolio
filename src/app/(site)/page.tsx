@@ -16,10 +16,11 @@ export default async function HomeRoute({
 }) {
   let allProjects = getProjects()
 
-  // // const sortedProjects = allProjects
-  // //   .filter((project) => project.metadata.isFeatured)
-  // //   .sort((a: any, b: any) => a.metadata.priority - b.metadata.priority)
-  // // const { project_category: projectCategory } = searchParams
+  console.log(allProjects)
+
+  const sortedProjects = allProjects
+    .filter((project) => project.metadata.isFeatured)
+    .sort((a: any, b: any) => a.metadata.priority - b.metadata.priority)
 
   return (
     <main>
@@ -29,8 +30,7 @@ export default async function HomeRoute({
 
           <div className="border-b p-5 ">
             <Subheading>
-              {`Creative React Developer specialized in NextJS & Tailwind
-            CSS`}
+              {`Fullstack Developer specialized in NextJS, Tailwind CSS & Sanity`}
             </Subheading>
           </div>
         </div>
@@ -45,41 +45,7 @@ export default async function HomeRoute({
         </div>
       </div>
 
-      <WorkSection projects={allProjects} />
+      <WorkSection projects={sortedProjects} />
     </main>
   )
 }
-
-// // import { PlusIcon } from "lucide-react"
-// // import type { Metadata } from "next"
-// // import Link from "next/link"
-// // import { Balancer } from "react-wrap-balancer"
-
-// // import { ProjectsContainer } from "@/components/project/projects-container"
-// // import { getAllProjectsMeta } from "@/lib/mdx"
-
-// // // // export const metadata: Metadata = {
-// // // //   title: "Home",
-// // // //   description:
-// // // //     "This section includes end-to-end guides for developing Next.js 13 apps.",
-// // // //   openGraph: {
-// // // //     title: "Home",
-// // // //     description:
-// // // //       "This section includes end-to-end guides for developing Next.js 13 apps.",
-// // // //   },
-// // // // }
-
-// // export default async function IndexPage() {
-// //   const projects = await getAllProjectsMeta()
-
-// //   const featuredProjects = projects
-// //     .filter((project) => project.isFeatured)
-// //     .sort((a: any, b: any) => a.priority - b.priority)
-// //   return (
-// //     <main>
-// //       <div classNameName="mx-auto flex max-w-[980px] flex-col items-center gap-y-2.5 md:gap-y-0"></div>
-
-// //       <ProjectsContainer projects={featuredProjects} />
-// //     </main>
-// //   )
-// // }

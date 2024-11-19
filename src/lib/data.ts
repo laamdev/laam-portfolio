@@ -21,7 +21,6 @@ export const techStack = {
         category: "UI",
         link: "https://ui.shadcn.com",
       },
-
       {
         technology: "Framer Motion",
         category: "Animation",
@@ -55,9 +54,9 @@ export const techStack = {
         link: "https://vercel.com",
       },
       {
-        technology: "PlanetScale",
+        technology: "Neon",
         category: "Database",
-        link: "https://planetscale.com",
+        link: "https://neon.tech",
       },
       {
         technology: "Drizzle",
@@ -81,24 +80,12 @@ export const techStack = {
       link: "https://www.radix-ui.com",
     },
     {
-      technology: "NextUI",
-      link: "https://nextui.org",
-    },
-    {
-      technology: "Headless UI",
-      link: "https://headlessui.com",
-    },
-    {
       technology: "Tailwind UI",
       link: "https://tailwindui.com",
     },
     {
       technology: "MDX",
       link: "https://mdxjs.com",
-    },
-    {
-      technology: "ContentLayer",
-      link: "https://contentlayer.dev",
     },
     {
       technology: "Resend",
@@ -114,20 +101,12 @@ export const techStack = {
       link: "https://prisma.io",
     },
     {
-      technology: "Neon",
-      link: "https://neon.tech",
-    },
-    {
       technology: "Railway",
       link: "https://railway.app",
     },
     {
       technology: "Supabase",
       link: "https://supabase.com",
-    },
-    {
-      technology: "MySQL",
-      link: "https://www.mysql.com",
     },
     {
       technology: "PostgreSQL",
