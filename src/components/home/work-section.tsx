@@ -1,39 +1,22 @@
-"use client"
-
-import { useEffect } from "react"
-
 import { Heading } from "@/components/global/heading"
 import { ProjectGrid } from "@/components/home/project-grid"
-import { ProjectList } from "@/components/home/project-list"
-import { ViewToggle } from "@/components/home/view-toggle"
-import { useViewStore } from "@/lib/store"
 
+import { getProjects } from "@/lib/mdx"
 
-export const WorkSection = ({ projects }) => {
-  const viewStore = useViewStore()
+export const WorkSection = async () => {
+  const allProjects = getProjects()
 
-  useEffect(() => {
-    useViewStore.persist.rehydrate()
-  }, [])
-
-
-  const sortedProjects = projects.sort((a,b) => a.metadata.priority - b.metadata.priority)
+  const sortedProjects = allProjects
+    .filter((project) => project.metadata.isFeatured)
+    .sort((a: any, b: any) => a.metadata.priority - b.metadata.priority)
 
   return (
     <div>
-      <div className="flex justify-between border-b p-5">
+      <div className="border-b p-5">
         <Heading>Work</Heading>
-        <ViewToggle
-          isToggled={viewStore.isToggled}
-          setToggle={viewStore.setToggle}
-        />
       </div>
 
-      {viewStore.isToggled ? (
-        <ProjectGrid projects={sortedProjects} />
-      ) : (
-        <ProjectList projects={sortedProjects} />
-      )}
+      <ProjectGrid projects={sortedProjects} />
     </div>
   )
 }

@@ -1,21 +1,25 @@
 import Image from "next/image"
 import { notFound } from "next/navigation"
 
-import { CustomMDX } from "@/components/mdx/mdx-remote"
 import { getSnippets } from "@/lib/mdx"
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}) {
-  let snippet = getSnippets().find((snippet) => snippet.slug === params.slug)
+interface SnippetPageProps {
+  params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: SnippetPageProps) {
+  const { slug } = await params
+
+  let snippet = getSnippets().find((snippet) => snippet.slug === slug)
 
   return { title: snippet?.metadata.title }
 }
 
-export default async function SnippetPage({ params }: { params: any }) {
-  let snippet = getSnippets().find((snippet) => snippet.slug === params.slug)
+export default async function SnippetPage({ params }: SnippetPageProps) {
+  const { slug } = await params
+
+  const snippet = getSnippets().find((snippet) => snippet.slug === slug)
+
   if (!snippet) {
     notFound()
   }
@@ -42,9 +46,9 @@ export default async function SnippetPage({ params }: { params: any }) {
             {snippet.metadata.title}
           </h2>
         </div>
-        <div className="p-5">
+        {/* <div className="p-5">
           <CustomMDX source={snippet.content} />
-        </div>
+        </div> */}
       </div>
     </main>
   )

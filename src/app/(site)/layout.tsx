@@ -1,12 +1,13 @@
-import "@/app/globals.css"
+import "../globals.css"
 
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { ReactNode } from "react"
 import { Metadata } from "next"
 import localFont from "next/font/local"
-import { ReactNode } from "react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { Footer } from "@/components/navigation/footer"
 import { Header } from "@/components/navigation/header"
+
 import { siteConfig } from "@/lib/constants"
 import { cn } from "@/lib/utils"
 

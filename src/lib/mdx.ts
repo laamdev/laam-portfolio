@@ -1,5 +1,6 @@
 import fs from "fs"
 import path from "path"
+// // import { globby } from "globby"
 
 import { ProjectFrontmatter, SnippetFrontmatter } from "@/types/mdx"
 
@@ -110,7 +111,3 @@ export function getSnippets() {
 export function getProjects() {
   return getProjectsMDXData(path.join(projectsRootDirectory))
 }
-
-// // export function getSnippets() {
-// //   return getMDXData(path.join(snippetsRootDirectory))
-// // }

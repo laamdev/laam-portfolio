@@ -1,15 +1,11 @@
 import { PlusIcon } from "lucide-react"
 
-import { CustomMDX } from "@/components/mdx/mdx-remote"
 import { Button } from "@/components/ui/button"
 import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -23,7 +19,7 @@ export const ProjectContentDrawer = ({ content }: { content: any }) => {
       </DrawerTrigger>
       <DrawerContent>
         <ScrollArea className="mx-auto h-[75vh] w-full max-w-prose p-5 md:p-10">
-          <CustomMDX source={content} />
+          {/* <CustomMDX source={content} /> */}
         </ScrollArea>
 
         <DrawerHeader>

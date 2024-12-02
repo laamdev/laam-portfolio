@@ -1,13 +1,10 @@
-import { SearchIcon } from "lucide-react"
 import type { Metadata } from "next"
 import Image from "next/image"
-import Link from "next/link"
 
 import { Heading } from "@/components/global/heading"
 import { NavButton } from "@/components/global/nav-button"
 import { Subheading } from "@/components/global/subheading"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+
 import { getSnippets } from "@/lib/mdx"
 
 export const metadata: Metadata = {
@@ -40,11 +37,6 @@ export default async function SnippetsPage() {
               <div className="flex flex-col-reverse border-b md:flex-row md:even:flex-row-reverse">
                 <article className="flex-1 border-b p-5 md:border-b-0">
                   <Subheading>{snippet.metadata.title}</Subheading>
-
-                  {/* <SnippetDetails>
-                    {formatDate(snippet.pubDate)} ·{" "}
-                    {remarkPluginFrontmatter.minutesRead}
-                  </SnippetDetails> */}
 
                   <div className="mt-2.5 md:mt-5">
                     <NavButton

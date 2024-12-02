@@ -6,24 +6,26 @@ import { LabelSm } from "@/components/global/label-sm"
 import { Subheading } from "@/components/global/subheading"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Badge } from "@/components/ui/badge"
+
 import { getProjects } from "@/lib/mdx"
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}) {
-  let project = getProjects().find((project) => project.slug === params.slug)
+interface ProjectPageProps {
+  params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: ProjectPageProps) {
+  const { slug } = await params
+
+  const project = getProjects().find((project) => project.slug === slug)
 
   return { title: project?.metadata.title }
 }
 
-export default async function ProjectPage({
-  params,
-}: {
-  params: { slug: string }
-}) {
-  let project = getProjects().find((project) => project.slug === params.slug)
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = await params
+
+  const project = getProjects().find((project) => project.slug === slug)
+
   if (!project) {
     notFound()
   }

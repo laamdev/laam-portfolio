@@ -3,25 +3,8 @@ import Image from "next/image"
 import { Heading } from "@/components/global/heading"
 import { Subheading } from "@/components/global/subheading"
 import { WorkSection } from "@/components/home/work-section"
-import { getProjects } from "@/lib/mdx"
 
-interface ProjectCategoryParams {
-  [key: string]: string
-}
-
-export default async function HomeRoute({
-  searchParams,
-}: {
-  searchParams: { searchParams: ProjectCategoryParams }
-}) {
-  let allProjects = getProjects()
-
-  console.log(allProjects)
-
-  const sortedProjects = allProjects
-    .filter((project) => project.metadata.isFeatured)
-    .sort((a: any, b: any) => a.metadata.priority - b.metadata.priority)
-
+export default async function HomeRoute() {
   return (
     <main>
       <div className="grid border-b md:grid-cols-2">
@@ -45,7 +28,7 @@ export default async function HomeRoute({
         </div>
       </div>
 
-      <WorkSection projects={sortedProjects} />
+      <WorkSection />
     </main>
   )
 }

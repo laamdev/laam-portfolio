@@ -2,10 +2,10 @@ import Image from "next/image"
 
 import { Label } from "@/components/global/label"
 import { Subheading } from "@/components/global/subheading"
+
 import { ProjectFrontmatter } from "@/types/mdx"
 
 export const ProjectGrid = ({ projects }: { projects: any }) => {
-
   return (
     <div className="grid md:grid-cols-2">
       {projects.map(
