@@ -4,7 +4,6 @@ import { notFound } from "next/navigation"
 import { Label } from "@/components/global/label"
 import { LabelSm } from "@/components/global/label-sm"
 import { Subheading } from "@/components/global/subheading"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Badge } from "@/components/ui/badge"
 
 import { getProjects } from "@/lib/mdx"
@@ -95,15 +94,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </div>
         <div className="row-start-1 md:row-auto">
-          <AspectRatio ratio={3 / 2}>
+          <div className="aspect-[16/10] relative">
             <Image
-              width={1350}
-              height={900}
               alt={project.metadata.title}
               src={project.metadata.coverImage}
-              className="border-primary scale-75 rounded-2xl border-4 object-cover object-center"
+              fill
+              className="border-primary scale-75 rounded-2xl border-4 object-cover object-top"
             />
-          </AspectRatio>
+          </div>
         </div>
       </section>
 

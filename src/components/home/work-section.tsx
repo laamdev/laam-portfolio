@@ -4,7 +4,7 @@ import { ProjectGrid } from "@/components/home/project-grid"
 import { getProjects } from "@/lib/mdx"
 
 export const WorkSection = async () => {
-  const allProjects = getProjects()
+  const allProjects = await getProjects()
 
   const sortedProjects = allProjects
     .filter((project) => project.metadata.isFeatured)
