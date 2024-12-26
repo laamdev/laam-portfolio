@@ -1,79 +1,71 @@
 import fs from "fs"
 import path from "path"
-// // import { globby } from "globby"
 
-import { ProjectFrontmatter, SnippetFrontmatter } from "@/types/mdx"
+export type ProjectMetadata = {
+  priority: number
+  isFeatured?: boolean
+  title: string
+  agency: string
+  category: string
+  functionality: string
+  year: number
+  coverImage: string
+  summary: string
+  description: string
+  siteUrl: string
+  codeUrl: string
+  role: string
+  stack: string
+}
 
-const projectsRootDirectory = path.join(
-  process.cwd(),
-  "src",
-  "content",
-  "projects"
-)
-const snippetsRootDirectory = path.join(
-  process.cwd(),
-  "src",
-  "content",
-  "snippets"
-)
+export type SnippetMetadata = {
+  isFeatured: boolean
+  title: string
+  cover: string
+  pubDate: string
+}
 
-function parseSnippetsFrontmatter(fileContent: string) {
+function parseFrontmatter<T>(fileContent: string) {
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/
   let match = frontmatterRegex.exec(fileContent)
   let frontMatterBlock = match![1]
   let content = fileContent.replace(frontmatterRegex, "").trim()
   let frontMatterLines = frontMatterBlock.trim().split("\n")
-  let metadata: Partial<SnippetFrontmatter> = {}
+  let metadata: Partial<T> = {}
 
   frontMatterLines.forEach((line) => {
     let [key, ...valueArr] = line.split(": ")
     let value = valueArr.join(": ").trim()
     value = value.replace(/^['"](.*)['"]$/, "$1")
-    // @ts-expect-error
-    metadata[key.trim() as keyof SnippetFrontmatter] = value
+
+    if (value.startsWith("[") && value.endsWith("]")) {
+      value = value
+        .slice(1, -1)
+        .split(",")
+        .map((item) => item.trim())
+        .join(", ")
+    }
+
+    metadata[key.trim() as keyof T] = value as any
   })
 
-  return { metadata: metadata as SnippetFrontmatter, content }
+  return { metadata: metadata as T, content }
 }
 
-function parseProjectsFrontmatter(fileContent: string) {
-  let frontmatterRegex = /---\s*([\s\S]*?)\s*---/
-  let match = frontmatterRegex.exec(fileContent)
-  let frontMatterBlock = match![1]
-  let content = fileContent.replace(frontmatterRegex, "").trim()
-  let frontMatterLines = frontMatterBlock.trim().split("\n")
-  let metadata: Partial<ProjectFrontmatter> = {}
-
-  frontMatterLines.forEach((line) => {
-    let [key, ...valueArr] = line.split(": ")
-    let value = valueArr.join(": ").trim()
-    value = value.replace(/^['"](.*)['"]$/, "$1")
-    // @ts-expect-error
-    metadata[key.trim() as keyof ProjectFrontmatter] = value
-  })
-
-  return { metadata: metadata as ProjectFrontmatter, content }
+function getMDXFiles(dir: string): string[] {
+  return fs
+    .readdirSync(dir)
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => path.join(dir, file))
 }
 
-function getMDXFiles(dir) {
-  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx")
-}
-
-function readSnippetsMDXFile(filePath) {
-  let rawContent = fs.readFileSync(filePath, "utf-8")
-  return parseSnippetsFrontmatter(rawContent)
-}
-
-function readProjectsMDXFile(filePath) {
-  let rawContent = fs.readFileSync(filePath, "utf-8")
-  return parseProjectsFrontmatter(rawContent)
-}
-
-function getSnippetsMDXData(dir) {
+function getMDXData<T>(dir: string) {
   let mdxFiles = getMDXFiles(dir)
-  return mdxFiles.map((file) => {
-    let { metadata, content } = readSnippetsMDXFile(path.join(dir, file))
-    let slug = path.basename(file, path.extname(file))
+
+  return mdxFiles.map((filePath) => {
+    let { metadata, content } = readMDXFile<T>(filePath)
+    let slug = path.basename(filePath, ".mdx")
+
     return {
       metadata,
       slug,
@@ -82,23 +74,28 @@ function getSnippetsMDXData(dir) {
   })
 }
 
-function getProjectsMDXData(dir) {
-  let mdxFiles = getMDXFiles(dir)
-  return mdxFiles.map((file) => {
-    let { metadata, content } = readProjectsMDXFile(path.join(dir, file))
-    let slug = path.basename(file, path.extname(file))
-    return {
-      metadata,
-      slug,
-      content,
-    }
-  })
+function readMDXFile<T>(filePath: string) {
+  try {
+    let rawContent = fs.readFileSync(filePath, "utf-8")
+    return parseFrontmatter<T>(rawContent)
+  } catch (error) {
+    console.error("Error reading file:", filePath, error)
+    throw error
+  }
 }
 
-export function getSnippets() {
-  return getSnippetsMDXData(path.join(snippetsRootDirectory))
+export function getAllProjects() {
+  const projectPath = path.join(process.cwd(), "src", "app", "work", "content")
+  return getMDXData<ProjectMetadata>(projectPath)
 }
 
-export function getProjects() {
-  return getProjectsMDXData(path.join(projectsRootDirectory))
+export function getAllSnippets() {
+  const snippetPath = path.join(
+    process.cwd(),
+    "src",
+    "app",
+    "snippets",
+    "content"
+  )
+  return getMDXData<SnippetMetadata>(snippetPath)
 }

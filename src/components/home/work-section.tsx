@@ -1,12 +1,11 @@
 import { Heading } from "@/components/global/heading"
 import { ProjectGrid } from "@/components/home/project-grid"
 
-import { getProjects } from "@/lib/mdx"
+import { getAllProjects } from "@/lib/mdx"
 
 export const WorkSection = async () => {
-  const allProjects = await getProjects()
-
-  const sortedProjects = allProjects
+  const projects = await getAllProjects()
+  const sortedProjects = projects
     .filter((project) => project.metadata.isFeatured)
     .sort((a: any, b: any) => a.metadata.priority - b.metadata.priority)
 
