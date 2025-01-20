@@ -1,6 +1,7 @@
-/** @type {import('tailwindcss').Config} */
-
 import type { Config } from "tailwindcss"
+import tailwindcssMotion from "tailwindcss-motion"
+import tailwindcssAnimate from "tailwindcss-animate"
+import typography from "@tailwindcss/typography"
 import { fontFamily } from "tailwindcss/defaultTheme"
 
 const config: Config = {
@@ -132,7 +133,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  plugins: [tailwindcssAnimate, typography, tailwindcssMotion],
 }
 
 export default config
