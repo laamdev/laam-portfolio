@@ -2,6 +2,7 @@ import Image from "next/image"
 
 import { Label } from "@/components/global/label"
 import { Subheading } from "@/components/global/subheading"
+import { Badge } from "@/components/ui/badge"
 
 import { ProjectFrontmatter } from "@/types/mdx"
 

@@ -4,6 +4,7 @@ import path from "path"
 export type ProjectMetadata = {
   priority: number
   isFeatured?: boolean
+  inProgress?: boolean
   title: string
   agency: string
   category: string

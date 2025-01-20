@@ -6,6 +6,7 @@ export interface Stack {
 export interface ProjectFrontmatter {
   priority: number
   isFeatured?: boolean
+  inProgress?: boolean
   title: string
   category: string
   functionality: string

@@ -56,6 +56,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <div className="grid gap-y-5 border-b p-5 md:grid-cols-3">
         <h1 className="col-span-2 font-serif text-4xl font-black uppercase md:self-center md:text-9xl">
           {project.metadata.title}
+          {project.metadata.inProgress && (
+            <Badge variant="outline" className="ml-4 rounded-full text-base">
+              In Progress
+            </Badge>
+          )}
         </h1>
 
         <div className="col-span-1 text-base md:self-end md:text-lg">
