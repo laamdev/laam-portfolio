@@ -81,7 +81,6 @@
     "eslint-plugin-simple-import-sort": "12.1.1",
     "eslint-plugin-tailwindcss": "3.18.0",
     "postcss": "8.5.1",
-    "prettier": "3.4.2",
-    "tailwindcss-motion": "^1.0.1"
+    "prettier": "3.4.2"
   }
 }

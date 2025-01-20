@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss"
-import tailwindcssMotion from "tailwindcss-motion"
 import tailwindcssAnimate from "tailwindcss-animate"
 import typography from "@tailwindcss/typography"
 import { fontFamily } from "tailwindcss/defaultTheme"
@@ -63,38 +62,6 @@ const config: Config = {
             "--tw-prose-hr": "var(--primary)",
             "--tw-prose-quotes": "var(--primary)",
             "--tw-prose-quote-borders": "var(--primary)",
-            // // "--tw-prose-body": "4b647c" theme("colors.primary[800]"),
-            // // "--tw-prose-headings": theme("colors.primary[900]"),
-            // // "--tw-prose-lead": theme("colors.primary[700]"),
-            // // "--tw-prose-links": theme("colors.primary[900]"),
-            // // "--tw-prose-bold": theme("colors.primary[900]"),
-            // // "--tw-prose-counters": theme("colors.primary[600]"),
-            // // "--tw-prose-bullets": theme("colors.primary[400]"),
-            // // "--tw-prose-hr": theme("colors.primary[300]"),
-            // // "--tw-prose-quotes": theme("colors.primary[900]"),
-            // // "--tw-prose-quote-borders": theme("colors.primary[300]"),
-            // // "--tw-prose-captions": theme("colors.primary[700]"),
-            // // "--tw-prose-code": theme("colors.primary[900]"),
-            // // "--tw-prose-pre-code": theme("colors.primary[100]"),
-            // // "--tw-prose-pre-bg": theme("colors.primary[900]"),
-            // // "--tw-prose-th-borders": theme("colors.primary[300]"),
-            // // "--tw-prose-td-borders": theme("colors.primary[200]"),
-            // // "--tw-prose-invert-body": theme("colors.primary[200]"),
-            // // "--tw-prose-invert-headings": theme("colors.white"),
-            // // "--tw-prose-invert-lead": theme("colors.primary[300]"),
-            // // "--tw-prose-invert-links": theme("colors.white"),
-            // // "--tw-prose-invert-bold": theme("colors.white"),
-            // // "--tw-prose-invert-counters": theme("colors.primary[400]"),
-            // // "--tw-prose-invert-bullets": theme("colors.primary[600]"),
-            // // "--tw-prose-invert-hr": theme("colors.primary[700]"),
-            // // "--tw-prose-invert-quotes": theme("colors.primary[100]"),
-            // // "--tw-prose-invert-quote-borders": theme("colors.primary[700]"),
-            // // "--tw-prose-invert-captions": theme("colors.primary[400]"),
-            // // "--tw-prose-invert-code": theme("colors.white"),
-            // // "--tw-prose-invert-pre-code": theme("colors.primary[300]"),
-            // // "--tw-prose-invert-pre-bg": "rgb(0 0 0 / 50%)",
-            // // "--tw-prose-invert-th-borders": theme("colors.primary[600]"),
-            // // "--tw-prose-invert-td-borders": theme("colors.primary[700]"),
           },
         },
       }),
@@ -133,7 +100,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [tailwindcssAnimate, typography, tailwindcssMotion],
+  plugins: [tailwindcssAnimate, typography],
 }
 
 export default config
